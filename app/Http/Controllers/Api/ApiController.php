@@ -16,6 +16,6 @@ class ApiController extends Controller
     public function getComics()
     {
         $comics = Comic::get();
-        return response()->json([$comics], 200);
+        return response()->json(['comics' => $comics], 200);
     }
 }
