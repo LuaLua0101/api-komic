@@ -1,8 +1,12 @@
 <?php
+Route::group(['middleware' => 'auth.jwt'], function () {
+    Route::post('logout', 'Api\AuthController@logout');
+    Route::post('refresh', 'Api\AuthController@refresh');
+    Route::post('me', 'Api\AuthController@me');
 
-Route::get('test-api', 'Api\ApiController@testApi');
-Route::get('comics', 'Api\ApiController@getComics');
+    Route::post('comics', 'Api\ApiController@testApi')->middleware(['can:get-transactions']);
+});
 
-// Route::middleware('auth:api')->get('/user', function (Request $request) {
-//     return $request->user();
-// });
+Route::post('login', ['as' => 'login', 'uses' => 'Api\AuthController@login']);
+Route::post('register', 'Api\AuthController@signup');
+Route::get('otp', 'Api\ApiController@sendOTP');
