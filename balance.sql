@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : ubuntu vultr
+ Source Server         : local
  Source Server Type    : MySQL
- Source Server Version : 100038
- Source Host           : 139.180.195.15:3306
+ Source Server Version : 100139
+ Source Host           : localhost:3306
  Source Schema         : balance
 
  Target Server Type    : MySQL
- Target Server Version : 100038
+ Target Server Version : 100139
  File Encoding         : 65001
 
- Date: 01/04/2020 15:06:20
+ Date: 01/04/2020 17:08:01
 */
 
 SET NAMES utf8mb4;
@@ -58,10 +58,10 @@ CREATE TABLE `role_permission`  (
 -- ----------------------------
 -- Records of role_permission
 -- ----------------------------
-INSERT INTO `role_permission` VALUES (1, 1);
 INSERT INTO `role_permission` VALUES (1, 2);
 INSERT INTO `role_permission` VALUES (1, 3);
 INSERT INTO `role_permission` VALUES (1, 4);
+INSERT INTO `role_permission` VALUES (1, 5);
 INSERT INTO `role_permission` VALUES (1, 6);
 
 -- ----------------------------
@@ -96,11 +96,6 @@ CREATE TABLE `user_role`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
--- Records of user_role
--- ----------------------------
-INSERT INTO `user_role` VALUES (1, 1);
-
--- ----------------------------
 -- Table structure for users
 -- ----------------------------
 DROP TABLE IF EXISTS `users`;
@@ -115,21 +110,12 @@ CREATE TABLE `users`  (
   `active` tinyint(1) NULL DEFAULT NULL COMMENT '1: đã xóa',
   `created_at` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
   `updated_at` timestamp(0) NULL DEFAULT NULL ON UPDATE CURRENT_TIMESTAMP(0),
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 67 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
+  PRIMARY KEY (`id`, `phone`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 68 CHARACTER SET = utf8 COLLATE = utf8_unicode_ci ROW_FORMAT = Compact;
 
 -- ----------------------------
 -- Records of users
 -- ----------------------------
-INSERT INTO `users` VALUES (1, 'admin', '1992-08-17', 0, '0918274973', '$2b$10$Ep4iGkIbQv/CUV/rgQ7BIulBvyjeO0Wxgp5BaNsKMADz5Mv5bGrsO', NULL, 0, '2020-04-01 07:34:12', '2020-04-01 07:34:12');
-INSERT INTO `users` VALUES (43, 'Đặng Văn Bằng', NULL, 1, '0989045507', '$2y$10$vo2OuK7lDb/hwvtGaBu/MOHaSDsVtuff6YVeS65XKPo5PO.TPaCS2', NULL, NULL, '2020-01-19 20:45:16', '2020-01-19 20:45:16');
-INSERT INTO `users` VALUES (59, 'test', NULL, 0, '0922224345', '$2y$10$sxxRY6onKBpuWvoU.zA3H.GqY86DvtlCn2oVDWulsMzbMFEyxkTLS', 'a@gmail.com', NULL, '2020-04-01 07:53:05', '2020-04-01 07:53:05');
-INSERT INTO `users` VALUES (60, 'test', NULL, 0, '0922224345', '$2y$10$J.Hns1AJBNQPhbqbKX985.tQHBXp97v//SagLbLR3KrFcJh6nYjeS', 'a@gmail.com', NULL, '2020-04-01 07:54:25', '2020-04-01 07:54:25');
-INSERT INTO `users` VALUES (61, 'test', NULL, 0, '0922224345', '$2y$10$vS8XkBmdoLVI5rom0eNA5OOq62bad176p6..jzwRCy9bK6Lj2yLDm', 'a@gmail.com', NULL, '2020-04-01 07:54:37', '2020-04-01 07:54:37');
-INSERT INTO `users` VALUES (62, 'test', NULL, 0, '0922224345', '$2y$10$ywZwLSvcveJwDTbe0DQ.uebcMmw4gkRzNN/6Hbl22sngnkE.VGkwS', 'a@gmail.com', NULL, '2020-04-01 07:54:54', '2020-04-01 07:54:54');
-INSERT INTO `users` VALUES (63, 'test', NULL, 0, '0922224345', '$2y$10$xNzVTu0pCJq2cqcwML8ADuiAZZ18dmHA6LJ0pwaB8Wa2B53Euhq7.', 'a@gmail.com', NULL, '2020-04-01 07:55:13', '2020-04-01 07:55:13');
-INSERT INTO `users` VALUES (64, 'test', NULL, 0, '0922224345', '$2y$10$3PJRvcvHVYC/ceApeVYvV.XT.0LVW4Cv4TkhwQQvjiiSISeYm8dIy', 'a@gmail.com', NULL, '2020-04-01 07:55:26', '2020-04-01 07:55:26');
-INSERT INTO `users` VALUES (65, 'test', NULL, 0, '0922224345', '$2y$10$k47OshgPn8a/df7944PnUOL7XfXnLMp5d1ZcXdkiU5Vm5C0dB4cAS', 'a@gmail.com', NULL, '2020-04-01 07:55:35', '2020-04-01 07:55:35');
-INSERT INTO `users` VALUES (66, 'test', NULL, 0, '0922224345', '$2y$10$RiN1QrkJn5jO8/tiVQ/LMOeLtUaG4GgCtvfGpXezM/LvCZX66nsQ.', 'a@gmail.com', NULL, '2020-04-01 07:57:43', '2020-04-01 07:57:43');
+INSERT INTO `users` VALUES (67, 'test', NULL, 0, '0922224345', '$2y$10$I/6whZdb30illMxZft99RuRLvzLGNnkjXTf.S.tuemXlH5R8gUzpy', 'a@gmail.com', NULL, '2020-04-01 09:10:49', '2020-04-01 09:10:49');
 
 SET FOREIGN_KEY_CHECKS = 1;
