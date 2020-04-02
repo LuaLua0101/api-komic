@@ -8,11 +8,6 @@ use Illuminate\Http\Request;
 
 class ApiController extends Controller
 {
-    public function __construct()
-    {
-        $this->middleware('api');
-    }
-
     public function testApi(Request $request)
     {
         return 'OK';
