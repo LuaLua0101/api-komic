@@ -10,7 +10,7 @@ class UserController extends Controller
 {
     public function getPersonalInfo(Request $request)
     {
-        return 'OK';
+        return Account::find(auth()->user()->id);
     }
 
     public function getMyCV(Request $request)
