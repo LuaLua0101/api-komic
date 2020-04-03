@@ -20,7 +20,7 @@ class UserController extends Controller
 
     public function updateFCM(Request $request)
     {
-        $t = Account::updateFCM($request);
+        $t = Account::updateFCM($request->fcm_token);
         if ($t) {
             return response()->json([], 200);
         } else {

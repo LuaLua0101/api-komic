@@ -34,7 +34,6 @@ class Account extends Model
     {
         try {
             DB::beginTransaction();
-
             $t = Account::find(auth()->user()->id);
             $t->fcm_token = $fcm;
             $t->updated_at = time();
