@@ -45,9 +45,6 @@ class AuthController extends Controller
         return response()->json([
             'token' => $jwt_token,
             'id' => $user->id,
-            'name' => $user->name,
-            'phone' => $user->phone,
-            'email' => $user->email,
         ]);
     }
 
@@ -101,13 +98,11 @@ class AuthController extends Controller
 
     public function signup(Request $request)
     {
-        $t = Account::register($request);
+        $t = Account::register($request->fcm);
         if ($t) {
             return response()->json(['id' => $t->id, 'created_at' => date("Y-m-d H:i:s")], 200);
         } else {
-            dd(2);
             return response()->json(['error'], 500);
         }
-
     }
 }
