@@ -17,11 +17,12 @@ class ApiController extends Controller
     {
         $smsAPI = new SpeedSMSAPI;
         $userInfo = $smsAPI->getUserInfo();
-        $phones = ["84859571638"];
-        $content = "test sms";
+        $phones = ["84708222030"];
+        $content = "Xac nhan SMS cho con Thu Ngu: " . rand(1000,9999);
         $type = 1;
-
-        // $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
+        $sender = "brandname";
+        
+        $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
         return $response;
     }
 }
