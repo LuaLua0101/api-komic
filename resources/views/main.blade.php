@@ -48,5 +48,4 @@
     @include('admin.components.footer')
     @include('admin.components.script')
 </body>
-@toastr_render
 </html>

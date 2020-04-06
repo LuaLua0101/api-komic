@@ -20,6 +20,10 @@
  </script>
  <script src="{{ asset('public/admins/assets/layouts/layout4/scripts/demo.min.js') }}" type="text/javascript">
  </script>
+ <script src="{{ asset('public/admins/assets/global/scripts/post.js') }}" type="text/javascript">
+ </script>
+ @toastr_js
+ @toastr_render
  <!-- END THEME LAYOUT SCRIPTS -->
  {{-- <script>
      $(document).ready(function() {

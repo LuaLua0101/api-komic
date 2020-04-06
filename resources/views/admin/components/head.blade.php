@@ -24,5 +24,13 @@
     <link href="{{ asset('public/admins/assets/layouts/layout4/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
     <!-- END THEME LAYOUT STYLES -->
     <link rel="shortcut icon" href="favicon.ico" />
+    <style>
+        #file-show {
+            margin-top: 10px;
+            max-width: 100%;
+            max-height: 300px;
+        }
+
+    </style>
 </head>
 <!-- END HEAD -->
