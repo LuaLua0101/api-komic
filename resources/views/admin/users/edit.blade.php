@@ -1,6 +1,6 @@
 @extends('main')
 @section('title', 'Thêm việc làm mới')
-@section('job_active', 'open')
+@section('user_active', 'open')
 @section('content')
 <div class="row">
     <div class="col-md-12">

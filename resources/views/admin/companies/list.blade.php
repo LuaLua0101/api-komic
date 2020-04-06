@@ -1,6 +1,6 @@
 @extends('main')
-@section('title', 'Danh sách việc làm')
-@section('job_active', 'open')
+@section('title', 'Danh sách doanh nghiệp')
+@section('company_active', 'open')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -8,11 +8,10 @@
             <p> Please try to re-size your browser window in order to see the tables in responsive mode. </p>
         </div> --}}
         @if(intval($data->sum) > 0)
-        <!-- BEGIN SAMPLE TABLE PORTLET-->
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-cogs"></i>Danh sách việc làm </div>
+                    <i class="fa fa-cogs"></i>Danh sách doanh nghiệp </div>
             </div>
             <div class="portlet-body flip-scroll">
                 <table class="table table-bordered table-striped table-condensed flip-content">
@@ -27,13 +26,13 @@
                     <tbody>
                         @foreach($data as $item)
                         <tr>
-                            <td> JOB0{{$item->id}}</td>
+                            <td> Company0{{$item->id}}</td>
                             <td> {{$item->title}} </td>
                             <td>
-                                <a class="btn delete-btn" href="{{route('adgetEditJob', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
+                                <a class="btn delete-btn" href="{{route('adgetEditCompany', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
                             </td>
                             <td>
-                                <a class="btn delete-btn" href="{{route('adgetDelJob', ['id' => $item->id])}}" onclick="return confirm('Bạn có chắc chắn xóa sản phẩm này?');">
+                                <a class="btn delete-btn" href="{{route('adgetDelCompany', ['id' => $item->id])}}" onclick="return confirm('Bạn có chắc chắn xóa sản phẩm này?');">
                                     <i class="icon icon-close"></i>
                                 </a>
                             </td>
@@ -46,22 +45,21 @@
                     </div>
                         <div class="col-md-7 col-sm-7">
                             <div class="dataTables_paginate paging_bootstrap_extended" id="sample_2_paginate">
-                                <div class="pagination-panel"> Trang <a href="{{route('adgetListJob', ['page' => $data->prev])}}" class="btn btn-sm default prev @if($data->page == 1) disabled @endif">
+                                <div class="pagination-panel"> Trang <a href="{{route('adgetListCompany', ['page' => $data->prev])}}" class="btn btn-sm default prev @if($data->page == 1) disabled @endif">
                                 <i class="fa fa-angle-left"></i>
                             </a>
                                 <input type="text" class="pagination-panel-input form-control input-sm input-inline input-mini"
                                 maxlenght="5" style="text-align:center; margin: 0 5px;" value={{$data->page}}>
-                                <a href="{{route('adgetListJob', ['page' => $data->next])}}" class="btn btn-sm default next @if($data->page == $data->sum) disabled @endif">
+                                <a href="{{route('adgetListCompany', ['page' => $data->next])}}" class="btn btn-sm default next @if($data->page == $data->sum) disabled @endif">
                                     <i class="fa fa-angle-right"></i>
                                 </a> / <span class="pagination-panel-total">{{$data->sum}}</span>
                             </div>
                         </div></div></div>
             </div>
         </div>
-        <!-- END SAMPLE TABLE PORTLET-->
-        @else
-        @include('admin.components.empty_table')
-        @endif
+@else
+@include('admin.components.empty_table')
+@endif
     </div>
 </div>
 @endsection

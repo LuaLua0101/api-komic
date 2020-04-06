@@ -3,23 +3,23 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
-use App\Models\Job;
+use App\Models\Course;
 use Illuminate\Http\Request;
 
-class JobController extends Controller
+class CourseController extends Controller
 {
     public function index($page = 1, $query = null)
     {
         $sum = 0;
         $page = $page < 1 ? 1 : $page;
         if ($query == null || $query == '') {
-            $sum =  Job::getSum();
+            $sum =  Course::getSum();
             $page = $page > $sum ? $sum : $page;
-            $data = Job::getList($page);
+            $data = Course::getList($page);
         } else {
-            $sum =  Job::getSum($query);
+            $sum =  Course::getSum($query);
             $page = $page > $sum ? $sum : $page;
-            $data = Job::getListQuery($query, $page);
+            $data = Course::getListQuery($query, $page);
             $data->query = $query;
         }
         
@@ -34,20 +34,20 @@ class JobController extends Controller
             $data->prev = $page - 1;
         }
         
-        return view('admin.jobs.list')->with('data', $data);
+        return view('admin.courses.list')->with('data', $data);
     }
 
-    public function getAddJob(Request $request)
+    public function getAddCourse(Request $request)
     {
-        return view('admin.jobs.add');
+        return view('admin.courses.add');
     }
 
-    public function postAddJob(Request $request)
+    public function postAddCourse(Request $request)
     {
         // title
         $title = $request->title;
         if (!$title) {
-            $title = "Job " . time();
+            $title = "Course " . time();
         }
 
         // coverFile
@@ -55,7 +55,7 @@ class JobController extends Controller
         $cover = "";
         if ($request->hasFile('cover')) {
             $cover = time() . '.' . $request->cover->extension();
-            $request->cover->storeAs('img/jobs/', $cover);
+            $request->cover->storeAs('img/courses/', $cover);
             $cover .= '?n=' . time();
         }
 
@@ -65,32 +65,32 @@ class JobController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
-        $result = Job::addNew($data);
+        $result = Course::addNew($data);
         if ($result) {
             toastr()->success('Thêm mới thành công');
-            return redirect()->route('adgetListJob');
+            return redirect()->route('adgetListCourse');
         } else {
             toastr()->error('Thêm mới thất bại');
-            return redirect()->route('adgetListJob');
+            return redirect()->route('adgetListCourse');
         }
     }
 
-    public function getEditJob($id)
+    public function getEditCourse($id)
     {
-        $data = Job::getById($id);
+        $data = Course::getById($id);
         if ($data) {
-            return view('admin.jobs.edit')->with('data', $data);
+            return view('admin.courses.edit')->with('data', $data);
         } else {
-            return redirect()->route('adgetListJob');
+            return redirect()->route('adgetListCourse');
         }
     }
 
-    public function postEditJob($id, Request $request)
+    public function postEditCourse($id, Request $request)
     {
         // title
         $title = $request->title;
         if (!$title) {
-            $title = "Job " . time();
+            $title = "Course " . time();
         }
 
         // coverFile
@@ -98,7 +98,7 @@ class JobController extends Controller
         $cover = "";
         if ($request->hasFile('cover')) {
             $cover = time() . '.' . $request->cover->extension();
-            $request->cover->storeAs('img/jobs/', $cover);
+            $request->cover->storeAs('img/courses/', $cover);
             $cover .= '?n=' . time();
         }
 
@@ -111,26 +111,26 @@ class JobController extends Controller
             $data['cover'] = $cover;
         }
 
-        $result = Job::updateRecord($id, $data);
+        $result = Course::updateRecord($id, $data);
 
         if ($result) {
             toastr()->success('Chỉnh sửa thành công');
-            return redirect()->route('adgetListJob');
+            return redirect()->route('adgetListCourse');
         } else {
             toastr()->error('Chỉnh sửa thất bại');
             return redirect()->back();
         }
     }
 
-    public function getDelJob($id)
+    public function getDelCourse($id)
     {
-        $result = Job::deleteRecord($id);
+        $result = Course::deleteRecord($id);
         if ($result) {
             toastr()->success('Xóa thành công');
-            return redirect()->route('adgetListJob')->with('success', 'Xóa thành công!');
+            return redirect()->route('adgetListCourse')->with('success', 'Xóa thành công!');
         } else {
             toastr()->error('Xóa thất bại');
-            return redirect()->route('adgetListJob')->with('error', 'Xóa thất bại!');
+            return redirect()->route('adgetListCourse')->with('error', 'Xóa thất bại!');
         }
     }
 

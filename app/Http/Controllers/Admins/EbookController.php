@@ -3,23 +3,23 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
-use App\Models\Job;
+use App\Models\TestEbook;
 use Illuminate\Http\Request;
 
-class JobController extends Controller
+class EbookController extends Controller
 {
     public function index($page = 1, $query = null)
     {
         $sum = 0;
         $page = $page < 1 ? 1 : $page;
         if ($query == null || $query == '') {
-            $sum =  Job::getSum();
+            $sum =  TestEbook::getSumEbook();
             $page = $page > $sum ? $sum : $page;
-            $data = Job::getList($page);
+            $data = TestEbook::getListEbook($page);
         } else {
-            $sum =  Job::getSum($query);
+            $sum =  TestEbook::getSumEbook($query);
             $page = $page > $sum ? $sum : $page;
-            $data = Job::getListQuery($query, $page);
+            $data = TestEbook::getListQueryEbook($query, $page);
             $data->query = $query;
         }
         
@@ -34,20 +34,20 @@ class JobController extends Controller
             $data->prev = $page - 1;
         }
         
-        return view('admin.jobs.list')->with('data', $data);
+        return view('admin.ebooks.list')->with('data', $data);
     }
 
-    public function getAddJob(Request $request)
+    public function getAddEbook(Request $request)
     {
-        return view('admin.jobs.add');
+        return view('admin.ebooks.add');
     }
 
-    public function postAddJob(Request $request)
+    public function postAddEbook(Request $request)
     {
         // title
         $title = $request->title;
         if (!$title) {
-            $title = "Job " . time();
+            $title = "Ebook " . time();
         }
 
         // coverFile
@@ -55,7 +55,7 @@ class JobController extends Controller
         $cover = "";
         if ($request->hasFile('cover')) {
             $cover = time() . '.' . $request->cover->extension();
-            $request->cover->storeAs('img/jobs/', $cover);
+            $request->cover->storeAs('img/ebooks/', $cover);
             $cover .= '?n=' . time();
         }
 
@@ -65,32 +65,32 @@ class JobController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
-        $result = Job::addNew($data);
+        $result = TestEbook::addNewEbook($data);
         if ($result) {
             toastr()->success('Thêm mới thành công');
-            return redirect()->route('adgetListJob');
+            return redirect()->route('adgetListEbook');
         } else {
             toastr()->error('Thêm mới thất bại');
-            return redirect()->route('adgetListJob');
+            return redirect()->route('adgetListEbook');
         }
     }
 
-    public function getEditJob($id)
+    public function getEditEbook($id)
     {
-        $data = Job::getById($id);
+        $data = TestEbook::getByIdEbook($id);
         if ($data) {
-            return view('admin.jobs.edit')->with('data', $data);
+            return view('admin.ebooks.edit')->with('data', $data);
         } else {
-            return redirect()->route('adgetListJob');
+            return redirect()->route('adgetListEbook');
         }
     }
 
-    public function postEditJob($id, Request $request)
+    public function postEditEbook($id, Request $request)
     {
         // title
         $title = $request->title;
         if (!$title) {
-            $title = "Job " . time();
+            $title = "Ebook " . time();
         }
 
         // coverFile
@@ -98,7 +98,7 @@ class JobController extends Controller
         $cover = "";
         if ($request->hasFile('cover')) {
             $cover = time() . '.' . $request->cover->extension();
-            $request->cover->storeAs('img/jobs/', $cover);
+            $request->cover->storeAs('img/ebooks/', $cover);
             $cover .= '?n=' . time();
         }
 
@@ -111,26 +111,26 @@ class JobController extends Controller
             $data['cover'] = $cover;
         }
 
-        $result = Job::updateRecord($id, $data);
+        $result = TestEbook::updateRecordEbook($id, $data);
 
         if ($result) {
             toastr()->success('Chỉnh sửa thành công');
-            return redirect()->route('adgetListJob');
+            return redirect()->route('adgetListEbook');
         } else {
             toastr()->error('Chỉnh sửa thất bại');
             return redirect()->back();
         }
     }
 
-    public function getDelJob($id)
+    public function getDelEbook($id)
     {
-        $result = Job::deleteRecord($id);
+        $result = TestEbook::deleteRecordEbook($id);
         if ($result) {
             toastr()->success('Xóa thành công');
-            return redirect()->route('adgetListJob')->with('success', 'Xóa thành công!');
+            return redirect()->route('adgetListEbook')->with('success', 'Xóa thành công!');
         } else {
             toastr()->error('Xóa thất bại');
-            return redirect()->route('adgetListJob')->with('error', 'Xóa thất bại!');
+            return redirect()->route('adgetListEbook')->with('error', 'Xóa thất bại!');
         }
     }
 

@@ -1,6 +1,6 @@
 @extends('main')
-@section('title', 'Thêm việc làm mới')
-@section('job_active', 'open')
+@section('title', 'Thêm doanh nghiệp mới')
+@section('company_active', 'open')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -9,16 +9,16 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-settings font-red"></i>
-                    <span class="caption-subject font-red sbold uppercase">Chỉnh sửa công việc</span>
+                    <span class="caption-subject font-red sbold uppercase">Chỉnh sửa thông tin doanh nghiệp</span>
                 </div>
             </div>
             <div class="portlet-body">
                 <!-- BEGIN FORM-->
-                <form action="{{route('adpostEditJob', ['id' => $data->id])}}" method="POST" class="form-horizontal" enctype='multipart/form-data'>
+                <form action="{{route('adpostEditCompany', ['id' => $data->id])}}" method="POST" class="form-horizontal" enctype='multipart/form-data'>
                     {{ csrf_field() }}
                     <div class="form-body">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Tiêu đề việc làm
+                            <label class="control-label col-md-3">Tên doanh nghiệp
                                 <span class="required" aria-required="true"> * </span>
                             </label>
                             <div class="col-md-4">
@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Hình cover
+                            <label class="control-label col-md-3">Logo công ty
                                 <span class="required" aria-required="true"> * </span>
                             </label>
                             <div class="col-md-4">
@@ -35,7 +35,7 @@
                                     {{substr($data->cover,0,strpos($data->cover,'?'))}} @else Chọn hình
                                     @endif </label>
                                 <img id="file-show" @if($data->cover != "")
-                                src="{{asset('public/admins/img/jobs/' .$data->cover)}}" @else class="hidden" @endif >
+                                src="{{asset('public/admins/img/companies/' .$data->cover)}}" @else class="hidden" @endif >
                             </div>
                         </div>
                         <div class="form-actions">

@@ -98,8 +98,9 @@ class Job extends Model
         }
     }
 
-    public static function getList($page = 0)
+    public static function getList($page = 1)
     {
+$page--;
         try {
             return job::orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
         } catch (Throwable $e) {
@@ -109,8 +110,20 @@ class Job extends Model
 
     public static function getListQuery($query, $page = 0)
     {
+        $page--;
         try {
             return Job::where('title', 'like', '%' . $query . '%')->orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
+        } catch (Throwable $e) {
+            return null;
+        }
+    }
+
+    public static function getSum($query = null)
+    {
+        try {
+            if($query)
+            return ceil(Job::where('title', 'like', '%' . $query . '%')->count() / 10);
+            else return ceil(Job::count() / 10);
         } catch (Throwable $e) {
             return null;
         }

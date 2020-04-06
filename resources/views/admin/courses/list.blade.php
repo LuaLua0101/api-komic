@@ -1,6 +1,6 @@
 @extends('main')
 @section('title', 'Danh sách việc làm')
-@section('job_active', 'open')
+@section('course_active', 'open')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -60,8 +60,8 @@
         </div>
         <!-- END SAMPLE TABLE PORTLET-->
         @else
-        @include('admin.components.empty_table')
-        @endif
+@include('admin.components.empty_table')
+@endif
     </div>
 </div>
 @endsection

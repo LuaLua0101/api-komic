@@ -3,23 +3,23 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
-use App\Models\Job;
+use App\Models\Account;
 use Illuminate\Http\Request;
 
-class JobController extends Controller
+class UserController extends Controller
 {
     public function index($page = 1, $query = null)
     {
         $sum = 0;
         $page = $page < 1 ? 1 : $page;
         if ($query == null || $query == '') {
-            $sum =  Job::getSum();
+            $sum =  Account::getSum();
             $page = $page > $sum ? $sum : $page;
-            $data = Job::getList($page);
+            $data = Account::getList($page);
         } else {
-            $sum =  Job::getSum($query);
+            $sum =  Account::getSum($query);
             $page = $page > $sum ? $sum : $page;
-            $data = Job::getListQuery($query, $page);
+            $data = Account::getListQuery($query, $page);
             $data->query = $query;
         }
         
@@ -34,20 +34,20 @@ class JobController extends Controller
             $data->prev = $page - 1;
         }
         
-        return view('admin.jobs.list')->with('data', $data);
+        return view('admin.users.list')->with('data', $data);
     }
 
-    public function getAddJob(Request $request)
+    public function getAddUser(Request $request)
     {
-        return view('admin.jobs.add');
+        return view('admin.users.add');
     }
 
-    public function postAddJob(Request $request)
+    public function postAddUser(Request $request)
     {
         // title
         $title = $request->title;
         if (!$title) {
-            $title = "Job " . time();
+            $title = "User " . time();
         }
 
         // coverFile
@@ -55,7 +55,7 @@ class JobController extends Controller
         $cover = "";
         if ($request->hasFile('cover')) {
             $cover = time() . '.' . $request->cover->extension();
-            $request->cover->storeAs('img/jobs/', $cover);
+            $request->cover->storeAs('img/users/', $cover);
             $cover .= '?n=' . time();
         }
 
@@ -65,32 +65,32 @@ class JobController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
-        $result = Job::addNew($data);
+        $result = Account::addNew($data);
         if ($result) {
             toastr()->success('Thêm mới thành công');
-            return redirect()->route('adgetListJob');
+            return redirect()->route('adgetListUser');
         } else {
             toastr()->error('Thêm mới thất bại');
-            return redirect()->route('adgetListJob');
+            return redirect()->route('adgetListUser');
         }
     }
 
-    public function getEditJob($id)
+    public function getEditUser($id)
     {
-        $data = Job::getById($id);
+        $data = Account::getById($id);
         if ($data) {
-            return view('admin.jobs.edit')->with('data', $data);
+            return view('admin.users.edit')->with('data', $data);
         } else {
-            return redirect()->route('adgetListJob');
+            return redirect()->route('adgetListUser');
         }
     }
 
-    public function postEditJob($id, Request $request)
+    public function postEditUser($id, Request $request)
     {
         // title
         $title = $request->title;
         if (!$title) {
-            $title = "Job " . time();
+            $title = "User " . time();
         }
 
         // coverFile
@@ -98,7 +98,7 @@ class JobController extends Controller
         $cover = "";
         if ($request->hasFile('cover')) {
             $cover = time() . '.' . $request->cover->extension();
-            $request->cover->storeAs('img/jobs/', $cover);
+            $request->cover->storeAs('img/users/', $cover);
             $cover .= '?n=' . time();
         }
 
@@ -111,26 +111,26 @@ class JobController extends Controller
             $data['cover'] = $cover;
         }
 
-        $result = Job::updateRecord($id, $data);
+        $result = Account::updateRecord($id, $data);
 
         if ($result) {
             toastr()->success('Chỉnh sửa thành công');
-            return redirect()->route('adgetListJob');
+            return redirect()->route('adgetListUser');
         } else {
             toastr()->error('Chỉnh sửa thất bại');
             return redirect()->back();
         }
     }
 
-    public function getDelJob($id)
+    public function getDelUser($id)
     {
-        $result = Job::deleteRecord($id);
+        $result = Account::deleteRecord($id);
         if ($result) {
             toastr()->success('Xóa thành công');
-            return redirect()->route('adgetListJob')->with('success', 'Xóa thành công!');
+            return redirect()->route('adgetListUser')->with('success', 'Xóa thành công!');
         } else {
             toastr()->error('Xóa thất bại');
-            return redirect()->route('adgetListJob')->with('error', 'Xóa thất bại!');
+            return redirect()->route('adgetListUser')->with('error', 'Xóa thất bại!');
         }
     }
 

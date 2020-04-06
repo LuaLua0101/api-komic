@@ -30,7 +30,7 @@
                             </label>
                             <div class="col-md-4">
                                 <input type="file" class="custom-file-input" id="form-avatar" name="cover">
-                                <label class="custom-file-label" for="form-avatar">Choose file</label>
+                                <label class="custom-file-label" for="form-avatar">Chọn hình</label>
                                 <img id="file-show" class="hidden">
                             </div>
                         </div>

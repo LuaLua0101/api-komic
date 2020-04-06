@@ -4,8 +4,8 @@
      <div class="page-header-inner ">
          <!-- BEGIN LOGO -->
          <div class="page-logo">
-             <a href="index.html">
-                 <img src="../assets/layouts/layout4/img/logo-light.png" alt="logo" class="logo-default" /> </a>
+             {{-- <a href="index.html">
+                 <img src="{{asset('public/admins/logo.png')}}" alt="logo"  /> </a> --}}
              <div class="menu-toggler sidebar-toggler">
                  <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
              </div>
@@ -75,7 +75,7 @@
                      <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                      <!-- DOC: Apply "dropdown-hoverable" class after "dropdown" and remove data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to enable hover dropdown mode -->
                      <!-- DOC: Remove "dropdown-hoverable" and add data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to the below A element with dropdown-toggle class -->
-                     <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
+                     {{-- <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
                          <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                              <i class="icon-bell"></i>
                              <span class="badge badge-success"> 7 </span>
@@ -172,12 +172,12 @@
                                  </ul>
                              </li>
                          </ul>
-                     </li>
+                     </li> --}}
                      <!-- END NOTIFICATION DROPDOWN -->
                      <li class="separator hide"> </li>
                      <!-- BEGIN INBOX DROPDOWN -->
                      <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                     <li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
+                     {{-- <li class="dropdown dropdown-extended dropdown-inbox dropdown-dark" id="header_inbox_bar">
                          <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                              <i class="icon-envelope-open"></i>
                              <span class="badge badge-danger"> 4 </span>
@@ -248,12 +248,12 @@
                                  </ul>
                              </li>
                          </ul>
-                     </li>
+                     </li> --}}
                      <!-- END INBOX DROPDOWN -->
                      <li class="separator hide"> </li>
                      <!-- BEGIN TODO DROPDOWN -->
                      <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
-                     <li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar">
+                     {{-- <li class="dropdown dropdown-extended dropdown-tasks dropdown-dark" id="header_task_bar">
                          <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                              <i class="icon-calendar"></i>
                              <span class="badge badge-primary"> 3 </span>
@@ -282,13 +282,13 @@
                                  </ul>
                              </li>
                          </ul>
-                     </li>
+                     </li> --}}
                      <!-- END TODO DROPDOWN -->
                      <!-- BEGIN USER LOGIN DROPDOWN -->
                      <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                      <li class="dropdown dropdown-user dropdown-dark">
                          <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                             <span class="username username-hide-on-mobile"> Nick </span>
+                             <span class="username username-hide-on-mobile"> {{auth()->user()->email}} </span>
                              <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
                              <img alt="" class="img-circle" src="../assets/layouts/layout4/img/avatar9.jpg" /> </a>
                          <ul class="dropdown-menu dropdown-menu-default">
@@ -296,7 +296,7 @@
                                  <a href="page_user_profile_1.html">
                                      <i class="icon-user"></i> My Profile </a>
                              </li>
-                             <li>
+                             {{-- <li>
                                  <a href="app_calendar.html">
                                      <i class="icon-calendar"></i> My Calendar </a>
                              </li>
@@ -316,7 +316,7 @@
                              <li>
                                  <a href="page_user_lock_1.html">
                                      <i class="icon-lock"></i> Lock Screen </a>
-                             </li>
+                             </li> --}}
                              <li>
                                  <a href="page_user_login_1.html">
                                      <i class="icon-key"></i> Log Out </a>
