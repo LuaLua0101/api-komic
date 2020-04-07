@@ -4,7 +4,7 @@
      <div class="page-header-inner ">
          <!-- BEGIN LOGO -->
          <div class="page-logo">
-            <a href="index.html">
+            <a href="{{ route('adgetHome') }}">
                 <img src="{{ asset('public/admins/logo.png') }}" alt="logo" class="logo-default"> </a>
             <div class="menu-toggler sidebar-toggler">
                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
@@ -56,16 +56,18 @@
          <div class="page-top">
              <!-- BEGIN HEADER SEARCH BOX -->
              <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-             {{-- <form class="search-form" action="page_general_search_2.html" method="GET">
+             @if(isset($action) && isset($action['search_link']))
+             <form class="search-form" action={{$action['search_link']}} method="GET">
                  <div class="input-group">
-                     <input type="text" class="form-control input-sm" placeholder="Search..." name="query">
+                 <input type="text" class="form-control input-sm" placeholder="Tìm kiếm..." name="query" value="{{request()->query('query')}}">
                      <span class="input-group-btn">
                          <a href="javascript:;" class="btn submit">
                              <i class="icon-magnifier"></i>
                          </a>
                      </span>
                  </div>
-             </form> --}}
+             </form>
+             @endif
              <!-- END HEADER SEARCH BOX -->
              <!-- BEGIN TOP NAVIGATION MENU -->
              <div class="top-menu">
@@ -293,7 +295,7 @@
                              <img alt="" class="img-circle" src="{{ asset('public/admins/img/users/'. auth()->user()->avatar) }}" /> </a>
                          <ul class="dropdown-menu dropdown-menu-default">
                              <li>
-                                 <a href="page_user_profile_1.html">
+                                 <a href="{{ route('adgetPro5User') }}">
                                      <i class="icon-user"></i> My Profile </a>
                              </li>
                              {{-- <li>

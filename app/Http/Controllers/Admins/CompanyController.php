@@ -35,8 +35,10 @@ class CompanyController extends Controller
             $data->prev = $page - 1;
         }
 
-        $action = ['title' =>'Thêm mới công ty',
-        'link'=> route('adgetAddCompany')];
+        $action = [
+            'title' =>'Thêm mới công ty',
+        'link'=> route('adgetAddCompany')
+    ];
         return view('admin.companies.list')->with(['data'=> $data, 'action' => $action]);
     }
 

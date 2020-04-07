@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 
 class JobController extends Controller
 {
-    public function index($page = 1, $query = null)
+    public function index(Request $request, $page = 1)
     {
         $sum = 0;
         $page = $page < 1 ? 1 : $page;
+        $query = $request->query('query');
         if ($query == null || $query == '') {
             $sum =  Job::getSum();
             $page = $page > $sum ? $sum : $page;
@@ -34,7 +35,12 @@ class JobController extends Controller
             $data->prev = $page - 1;
         }
         
-        return view('admin.jobs.list')->with('data', $data);
+        $action = [
+            'title' =>'Thêm mới công việc',
+            'link'=> route('adgetAddJob'),
+            'search_link' => route('adgetListJob')
+        ];
+        return view('admin.jobs.list')->with(['data'=> $data, 'action' => $action]);
     }
 
     public function getAddJob(Request $request)

@@ -13,6 +13,11 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-cogs"></i>Danh sách việc làm </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                        <a href="javascript:;" class="reload" data-original-title="" title=""> </a>
+                        <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
+                    </div>
             </div>
             <div class="portlet-body flip-scroll">
                 <table class="table table-bordered table-striped table-condensed flip-content">
@@ -35,7 +40,7 @@
                             <td> {{$item->title}} </td>
                             <td> {{number_format($item->salary_from, 0, '', ',') . ' - ' . number_format($item->salary_to, 0, '', ',')}} </td>
                             <td> {{$item->apply_count}} </td>
-                            <td> {{\App\Models\Company::find($item->company_id)->name}} </td>
+                            <td> {{\App\Models\Company::getNameById($item->company_id)}} </td>
                             <td> {{$item->created_at}} </td>
                             <td>
                                 <a class="btn delete-btn" href="{{route('adgetEditJob', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
@@ -54,11 +59,11 @@
                     </div>
                     <div class="col-md-7 col-sm-7">
                         <div class="dataTables_paginate paging_bootstrap_extended" id="sample_2_paginate">
-                            <div class="pagination-panel"> Trang <a href="{{route('adgetListJob', ['page' => $data->prev])}}" class="btn btn-sm default prev @if($data->page == 1) disabled @endif">
+                            <div class="pagination-panel"> Trang <a href="{{route('adgetListJob', ['page' => $data->prev])  . '?query='. request()->query('query')}}" class="btn btn-sm default prev @if($data->page == 1) disabled @endif">
                                     <i class="fa fa-angle-left"></i>
                                 </a>
                                 <input type="text" class="pagination-panel-input form-control input-sm input-inline input-mini" maxlenght="5" style="text-align:center; margin: 0 5px;" value={{$data->page}}>
-                                <a href="{{route('adgetListJob', ['page' => $data->next])}}" class="btn btn-sm default next @if($data->page == $data->sum) disabled @endif">
+                                <a href="{{route('adgetListJob', ['page' => $data->next]) . '?query='. request()->query('query')}}" class="btn btn-sm default next @if($data->page == $data->sum) disabled @endif">
                                     <i class="fa fa-angle-right"></i>
                                 </a> / <span class="pagination-panel-total">{{$data->sum}}</span>
                             </div>

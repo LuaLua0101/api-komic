@@ -12,7 +12,13 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-cogs"></i>Danh sách công ty </div>
+                    <div class="tools">
+                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                        <a href="javascript:;" class="reload" data-original-title="" title=""> </a>
+                        <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
+                    </div>
             </div>
+            
             <div class="portlet-body flip-scroll">
                 <table class="table table-bordered table-striped table-condensed flip-content">
                     <thead class="flip-content">

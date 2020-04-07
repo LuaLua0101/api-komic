@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-    public function index($page = 1, $query = null)
+    public function index(Request $request, $page = 1)
     {
         $sum = 0;
         $page = $page < 1 ? 1 : $page;
+        $query = $request->query('query');
         if ($query == null || $query == '') {
             $sum =  TestEbook::getSumTest();
             $page = $page > $sum ? $sum : $page;

@@ -134,4 +134,7 @@ class UserController extends Controller
         }
     }
 
+    public function getPro5User() {
+        return view('admin.profile');
+    }
 }

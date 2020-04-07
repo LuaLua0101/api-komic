@@ -14,7 +14,7 @@ Route::prefix('/ad')->group(function () {
 
         // Jobs
         Route::prefix('/job')->group(function () {
-            Route::get('/list/{page?}/{query?}', 'Admins\JobController@index')->name('adgetListJob');
+            Route::get('/list/{page?}', 'Admins\JobController@index')->name('adgetListJob');
 
             Route::get('/add', 'Admins\JobController@getAddJob')->name('adgetAddJob');
             Route::post('/add', 'Admins\JobController@postAddJob')->name('adpostAddJob');
@@ -49,6 +49,8 @@ Route::prefix('/ad')->group(function () {
             Route::post('/edit/{id}', 'Admins\UserController@postEditUser')->name('adpostEditUser');
 
             Route::get('/del/{id}', 'Admins\UserController@getDelUser')->name('adgetDelUser');
+
+            Route::get('/profile', 'Admins\UserController@getPro5User')->name('adgetPro5User');
         });
 
         // Course
@@ -66,7 +68,7 @@ Route::prefix('/ad')->group(function () {
 
         // Test
         Route::prefix('/test')->group(function () {
-            Route::get('/list/{page?}/{query?}', 'Admins\TestController@index')->name('adgetListTest');
+            Route::get('/list/{page?}', 'Admins\TestController@index')->name('adgetListTest');
 
             Route::get('/add', 'Admins\TestController@getAddTest')->name('adgetAddTest');
             Route::post('/add', 'Admins\TestController@postAddTest')->name('adpostAddTest');
