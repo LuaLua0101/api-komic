@@ -1,4 +1,12 @@
 <div class="page-toolbar">
+    @if(isset($action))
+    <a href="{{$action['link']}}" style="color: #fff"><div id="dashboard-report-range" data-display-range="0" class="pull-right tooltips btn btn-fit-height green" data-placement="left" >
+        <span class="thin uppercase hidden-xs">
+        {{$action['title']}}
+    </span>&nbsp;
+        <i class="icon-plus"></i>
+    </div></a>
+    @endif
     <!-- BEGIN THEME PANEL -->
     <div class="btn-group btn-theme-panel">
         <a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown">

@@ -35,12 +35,16 @@ class CompanyController extends Controller
             $data->prev = $page - 1;
         }
 
-        return view('admin.companies.list')->with('data', $data);
+        $action = ['title' =>'Thêm mới công ty',
+        'link'=> route('adgetAddCompany')];
+        return view('admin.companies.list')->with(['data'=> $data, 'action' => $action]);
     }
 
     public function getAddCompany(Request $request)
     {
-        return view('admin.companies.add');
+        $action = ['title' =>'Danh sách công ty',
+        'link'=> route('adgetListCompany')];
+        return view('admin.companies.add')->with(['action' => $action]);
     }
 
     public function postAddCompany(Request $request)

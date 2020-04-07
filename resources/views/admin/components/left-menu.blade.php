@@ -7,7 +7,7 @@
             </li>
             <li class="nav-item @yield('job_active')">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-layers"></i>
+                    <i class=" icon-direction"></i>
                     <span class="title">Quản lý tuyển dụng</span>
                     <span class="arrow"></span>
                 </a>
@@ -26,7 +26,7 @@
             </li>
             <li class="nav-item @yield('company_active')">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-layers"></i>
+                    <i class="icon-briefcase"></i>
                     <span class="title">Quản lý công ty</span>
                     <span class="arrow"></span>
                 </a>
@@ -50,7 +50,7 @@
             </li>
             <li class="nav-item @yield('user_active')">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-layers"></i>
+                    <i class="icon-user"></i>
                     <span class="title">Quản lý người dùng</span>
                     <span class="arrow"></span>
                 </a>
@@ -69,7 +69,7 @@
             </li>
             <li class="nav-item @yield('course_active')">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-layers"></i>
+                    <i class="icon-book-open"></i>
                     <span class="title">Quản lý khóa học</span>
                     <span class="arrow"></span>
                 </a>
@@ -88,7 +88,7 @@
             </li>
             <li class="nav-item @yield('testebook_active')">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-layers"></i>
+                    <i class="icon-docs"></i>
                     <span class="title">Quản lý bài test/ebook</span>
                     <span class="arrow"></span>
                 </a>
@@ -117,7 +117,7 @@
             </li>
             <li class="nav-item @yield('province_active')">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-layers"></i>
+                    <i class="icon-map"></i>
                     <span class="title">Quản lý tỉnh thành</span>
                     <span class="arrow"></span>
                 </a>
@@ -131,7 +131,7 @@
             </li>
             <li class="nav-item @yield('degree_active')">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-layers"></i>
+                    <i class="icon-graduation"></i>
                     <span class="title">Quản lý bằng cấp/chứng chỉ</span>
                     <span class="arrow"></span>
                 </a>
@@ -145,7 +145,7 @@
             </li>
             <li class="nav-item @yield('author_active')">
                 <a href="javascript:;" class="nav-link nav-toggle">
-                    <i class="icon-layers"></i>
+                    <i class="icon-user-female"></i>
                     <span class="title">Quản lý giảng viên</span>
                     <span class="arrow"></span>
                 </a>

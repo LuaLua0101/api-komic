@@ -4,22 +4,22 @@
      <div class="page-header-inner ">
          <!-- BEGIN LOGO -->
          <div class="page-logo">
-             {{-- <a href="index.html">
-                 <img src="{{asset('public/admins/logo.png')}}" alt="logo" /> </a> --}}
-             <div class="menu-toggler sidebar-toggler">
-                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
-             </div>
-         </div>
+            <a href="index.html">
+                <img src="{{ asset('public/admins/logo.png') }}" alt="logo" class="logo-default"> </a>
+            <div class="menu-toggler sidebar-toggler">
+                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+            </div>
+        </div>
          <!-- END LOGO -->
          <!-- BEGIN RESPONSIVE MENU TOGGLER -->
          <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
          <!-- END RESPONSIVE MENU TOGGLER -->
          <!-- BEGIN PAGE ACTIONS -->
          <!-- DOC: Remove "hide" class to enable the page header actions -->
-         {{-- <div class="page-actions">
+         <div class="page-actions">
              <div class="btn-group">
                  <button type="button" class="btn red-haze btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                     <span class="hidden-sm hidden-xs">Actions&nbsp;</span>
+                     <span class="hidden-sm hidden-xs">Hỗ trợ&nbsp;</span>
                      <i class="fa fa-angle-down"></i>
                  </button>
                  <ul class="dropdown-menu" role="menu">
@@ -50,7 +50,7 @@
                      </li>
                  </ul>
              </div>
-         </div> --}}
+         </div>
          <!-- END PAGE ACTIONS -->
          <!-- BEGIN PAGE TOP -->
          <div class="page-top">
@@ -75,7 +75,7 @@
                      <!-- DOC: Apply "dropdown-dark" class after below "dropdown-extended" to change the dropdown styte -->
                      <!-- DOC: Apply "dropdown-hoverable" class after "dropdown" and remove data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to enable hover dropdown mode -->
                      <!-- DOC: Remove "dropdown-hoverable" and add data-toggle="dropdown" data-hover="dropdown" data-close-others="true" attributes to the below A element with dropdown-toggle class -->
-                     {{-- <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
+                     <li class="dropdown dropdown-extended dropdown-notification dropdown-dark" id="header_notification_bar">
                          <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                              <i class="icon-bell"></i>
                              <span class="badge badge-success"> 7 </span>
@@ -172,7 +172,7 @@
                                  </ul>
                              </li>
                          </ul>
-                     </li> --}}
+                     </li>
                      <!-- END NOTIFICATION DROPDOWN -->
                      <li class="separator hide"> </li>
                      <!-- BEGIN INBOX DROPDOWN -->
@@ -290,7 +290,7 @@
                          <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                              <span class="username username-hide-on-mobile"> {{auth()->user()->email}} </span>
                              <!-- DOC: Do not remove below empty space(&nbsp;) as its purposely used -->
-                             <img alt="" class="img-circle" src="../assets/layouts/layout4/img/avatar9.jpg" /> </a>
+                             <img alt="" class="img-circle" src="{{ asset('public/admins/img/users/'. auth()->user()->avatar) }}" /> </a>
                          <ul class="dropdown-menu dropdown-menu-default">
                              <li>
                                  <a href="page_user_profile_1.html">
