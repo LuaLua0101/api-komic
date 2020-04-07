@@ -1,5 +1,5 @@
 @extends('main')
-@section('title', 'Thêm việc làm mới')
+@section('title', 'Thêm ebook mới')
 @section('testebook_active', 'open')
 @section('content')
 <div class="row">
@@ -9,16 +9,16 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-settings font-red"></i>
-                    <span class="caption-subject font-red sbold uppercase">Thêm công việc mới</span>
+                    <span class="caption-subject font-red sbold uppercase">Thêm ebook mới</span>
                 </div>
             </div>
             <div class="portlet-body">
                 <!-- BEGIN FORM-->
-                <form action="{{route('adpostAddJob')}}" method="POST" class="form-horizontal" enctype='multipart/form-data'>
+                <form action="{{route('adpostAddEbook')}}" method="POST" class="form-horizontal" enctype='multipart/form-data'>
                     {{ csrf_field() }}
                     <div class="form-body">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Tiêu đề việc làm
+                            <label class="control-label col-md-3">Tên ebook
                                 <span class="required" aria-required="true"> * </span>
                             </label>
                             <div class="col-md-4">

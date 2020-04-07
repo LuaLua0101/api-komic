@@ -14,7 +14,7 @@
             </div>
             <div class="portlet-body">
                 <!-- BEGIN FORM-->
-                <form action="{{route('adpostEditJob', ['id' => $data->id])}}" method="POST" class="form-horizontal" enctype='multipart/form-data'>
+                <form action="{{route('adpostEditCourse', ['id' => $data->id])}}" method="POST" class="form-horizontal" enctype='multipart/form-data'>
                     {{ csrf_field() }}
                     <div class="form-body">
                         <div class="form-group">
@@ -35,7 +35,7 @@
                                     {{substr($data->cover,0,strpos($data->cover,'?'))}} @else Chọn hình
                                     @endif </label>
                                 <img id="file-show" @if($data->cover != "")
-                                src="{{asset('public/admins/img/jobs/' .$data->cover)}}" @else class="hidden" @endif >
+                                src="{{asset('public/admins/img/Courses/' .$data->cover)}}" @else class="hidden" @endif >
                             </div>
                         </div>
                         <div class="form-actions">

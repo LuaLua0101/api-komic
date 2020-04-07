@@ -1,5 +1,5 @@
 @extends('main')
-@section('title', 'Thêm việc làm mới')
+@section('title', 'Thêm người dùng mới')
 @section('user_active', 'open')
 @section('content')
 <div class="row">
@@ -9,23 +9,23 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-settings font-red"></i>
-                    <span class="caption-subject font-red sbold uppercase">Thêm công việc mới</span>
+                    <span class="caption-subject font-red sbold uppercase">Thêm người dùng mới</span>
                 </div>
             </div>
             <div class="portlet-body">
                 <!-- BEGIN FORM-->
-                <form action="{{route('adpostAddJob')}}" method="POST" class="form-horizontal" enctype='multipart/form-data'>
+                <form action="{{route('adpostAddUser')}}" method="POST" class="form-horizontal" enctype='multipart/form-data'>
                     {{ csrf_field() }}
                     <div class="form-body">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Tiêu đề việc làm
+                            <label class="control-label col-md-3">Họ tên
                                 <span class="required" aria-required="true"> * </span>
                             </label>
                             <div class="col-md-4">
-                                <input type="text" id="title" name="title" data-required="1" class="form-control" required=""> </div>
+                                <input type="text" id="name" name="name" data-required="1" class="form-control" required=""> </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Hình cover
+                            <label class="control-label col-md-3">Hình avatar
                                 <span class="required" aria-required="true"> * </span>
                             </label>
                             <div class="col-md-4">

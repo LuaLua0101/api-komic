@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
 use App\Models\Company;
+use App\Models\CompanySize;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -13,18 +14,18 @@ class CompanyController extends Controller
         $sum = 0;
         $page = $page < 1 ? 1 : $page;
         if ($query == null || $query == '') {
-            $sum =  Company::getSum();
+            $sum = Company::getSum();
             $page = $page > $sum ? $sum : $page;
             $data = Company::getList($page);
         } else {
-            $sum =  Company::getSum($query);
+            $sum = Company::getSum($query);
             $page = $page > $sum ? $sum : $page;
             $data = Company::getListQuery($query, $page);
             $data->query = $query;
         }
-        
+
         $data->sum = $sum;
-        if($page == $sum) {
+        if ($page == $sum) {
             $data->page = $sum;
             $data->next = $sum;
             $data->prev = $page - 1;
@@ -33,7 +34,7 @@ class CompanyController extends Controller
             $data->next = $page + 1;
             $data->prev = $page - 1;
         }
-        
+
         return view('admin.companies.list')->with('data', $data);
     }
 
@@ -44,34 +45,38 @@ class CompanyController extends Controller
 
     public function postAddCompany(Request $request)
     {
-        // title
+        // name
         $title = $request->title;
         if (!$title) {
             $title = "Company " . time();
         }
+
+        // address
+        $address = $request->address;
 
         // coverFile
         $coverFile = $request->cover;
         $cover = "";
         if ($request->hasFile('cover')) {
             $cover = time() . '.' . $request->cover->extension();
-            $request->cover->storeAs('img/Companys/', $cover);
+            $request->cover->storeAs('img/companies/', $cover);
             $cover .= '?n=' . time();
         }
 
         $data = [
-            'title' => $title,
-            'cover' => $cover,
+            'name' => $title,
+            'address' => $address,
+            'logo' => $cover,
             'created_at' => date('Y-m-d H:i:s'),
         ];
-
         $result = Company::addNew($data);
+
         if ($result) {
             toastr()->success('Thêm mới thành công');
             return redirect()->route('adgetListCompany');
         } else {
             toastr()->error('Thêm mới thất bại');
-            return redirect()->route('adgetListCompany');
+            return redirect()->route('adgetAddCompany');
         }
     }
 
@@ -93,6 +98,9 @@ class CompanyController extends Controller
             $title = "Company " . time();
         }
 
+        // address
+        $address = $request->address;
+
         // coverFile
         $coverFile = $request->cover;
         $cover = "";
@@ -103,12 +111,13 @@ class CompanyController extends Controller
         }
 
         $data = [
-            'title' => $title,
+            'name' => $title,
+            'address' => $address,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
         if ($cover != "") {
-            $data['cover'] = $cover;
+            $data['logo'] = $cover;
         }
 
         $result = Company::updateRecord($id, $data);
@@ -134,4 +143,10 @@ class CompanyController extends Controller
         }
     }
 
+    public function getCompanySize()
+    {
+        $data = CompanySize::get();
+
+        return view('admin.company_sizes.list')->with('data', $data);
+    }
 }

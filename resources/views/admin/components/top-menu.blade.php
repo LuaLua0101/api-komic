@@ -5,7 +5,7 @@
          <!-- BEGIN LOGO -->
          <div class="page-logo">
              {{-- <a href="index.html">
-                 <img src="{{asset('public/admins/logo.png')}}" alt="logo"  /> </a> --}}
+                 <img src="{{asset('public/admins/logo.png')}}" alt="logo" /> </a> --}}
              <div class="menu-toggler sidebar-toggler">
                  <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
              </div>
@@ -56,7 +56,7 @@
          <div class="page-top">
              <!-- BEGIN HEADER SEARCH BOX -->
              <!-- DOC: Apply "search-form-expanded" right after the "search-form" class to have half expanded search box -->
-             <form class="search-form" action="page_general_search_2.html" method="GET">
+             {{-- <form class="search-form" action="page_general_search_2.html" method="GET">
                  <div class="input-group">
                      <input type="text" class="form-control input-sm" placeholder="Search..." name="query">
                      <span class="input-group-btn">
@@ -65,7 +65,7 @@
                          </a>
                      </span>
                  </div>
-             </form>
+             </form> --}}
              <!-- END HEADER SEARCH BOX -->
              <!-- BEGIN TOP NAVIGATION MENU -->
              <div class="top-menu">
@@ -318,14 +318,14 @@
                                      <i class="icon-lock"></i> Lock Screen </a>
                              </li> --}}
                              <li>
-                                 <a href="page_user_login_1.html">
+                                 <a href="{{ route('adgetLogout') }}">
                                      <i class="icon-key"></i> Log Out </a>
                              </li>
                          </ul>
                      </li>
                      <!-- END USER LOGIN DROPDOWN -->
                      <!-- BEGIN QUICK SIDEBAR TOGGLER -->
-                     <li class="dropdown dropdown-extended quick-sidebar-toggler">
+                     <li class="dropdown dropdown-extended quick-sidebar-toggler" onclick="window.location.href = '{{ route('adgetLogout') }}';">
                          <span class="sr-only">Toggle Quick Sidebar</span>
                          <i class="icon-logout"></i>
                      </li>

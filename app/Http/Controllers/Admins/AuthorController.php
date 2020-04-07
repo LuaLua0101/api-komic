@@ -3,23 +3,23 @@
 namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
-use App\Models\Account;
+use App\Models\Author;
 use Illuminate\Http\Request;
 
-class UserController extends Controller
+class AuthorController extends Controller
 {
     public function index($page = 1, $query = null)
     {
         $sum = 0;
         $page = $page < 1 ? 1 : $page;
         if ($query == null || $query == '') {
-            $sum = Account::getSum();
+            $sum = Author::getSum();
             $page = $page > $sum ? $sum : $page;
-            $data = Account::getList($page);
+            $data = Author::getList($page);
         } else {
-            $sum = Account::getSum($query);
+            $sum = Author::getSum($query);
             $page = $page > $sum ? $sum : $page;
-            $data = Account::getListQuery($query, $page);
+            $data = Author::getListQuery($query, $page);
             $data->query = $query;
         }
 
@@ -34,20 +34,20 @@ class UserController extends Controller
             $data->prev = $page - 1;
         }
 
-        return view('admin.users.list')->with('data', $data);
+        return view('admin.authors.list')->with('data', $data);
     }
 
-    public function getAddUser(Request $request)
+    public function getAddAuthor(Request $request)
     {
-        return view('admin.users.add');
+        return view('admin.authors.add');
     }
 
-    public function postAddUser(Request $request)
+    public function postAddAuthor(Request $request)
     {
         // name
         $name = $request->name;
         if (!$name) {
-            $name = "User " . time();
+            $name = "Author " . time();
         }
 
         // coverFile
@@ -55,7 +55,7 @@ class UserController extends Controller
         $cover = "";
         if ($request->hasFile('cover')) {
             $cover = time() . '.' . $request->cover->extension();
-            $request->cover->storeAs('img/users/', $cover);
+            $request->cover->storeAs('img/authors/', $cover);
             $cover .= '?n=' . time();
         }
 
@@ -65,32 +65,32 @@ class UserController extends Controller
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
-        $result = Account::addNew($data);
+        $result = Author::addNew($data);
         if ($result) {
             toastr()->success('Thêm mới thành công');
-            return redirect()->route('adgetListUser');
+            return redirect()->route('adgetListAuthor');
         } else {
             toastr()->error('Thêm mới thất bại');
-            return redirect()->route('adgetListUser');
+            return redirect()->route('adgetListAuthor');
         }
     }
 
-    public function getEditUser($id)
+    public function getEditAuthor($id)
     {
-        $data = Account::getById($id);
+        $data = Author::getById($id);
         if ($data) {
-            return view('admin.users.edit')->with('data', $data);
+            return view('admin.authors.edit')->with('data', $data);
         } else {
-            return redirect()->route('adgetListUser');
+            return redirect()->route('adgetListAuthor');
         }
     }
 
-    public function postEditUser($id, Request $request)
+    public function postEditAuthor($id, Request $request)
     {
         // name
         $name = $request->name;
         if (!$name) {
-            $name = "User " . time();
+            $name = "Author " . time();
         }
 
         // coverFile
@@ -98,7 +98,7 @@ class UserController extends Controller
         $cover = "";
         if ($request->hasFile('cover')) {
             $cover = time() . '.' . $request->cover->extension();
-            $request->cover->storeAs('img/users/', $cover);
+            $request->cover->storeAs('img/authors/', $cover);
             $cover .= '?n=' . time();
         }
 
@@ -111,26 +111,26 @@ class UserController extends Controller
             $data['avatar'] = $cover;
         }
 
-        $result = Account::updateRecord($id, $data);
+        $result = Author::updateRecord($id, $data);
 
         if ($result) {
             toastr()->success('Chỉnh sửa thành công');
-            return redirect()->route('adgetListUser');
+            return redirect()->route('adgetListAuthor');
         } else {
             toastr()->error('Chỉnh sửa thất bại');
             return redirect()->back();
         }
     }
 
-    public function getDelUser($id)
+    public function getDelAuthor($id)
     {
-        $result = Account::deleteRecord($id);
+        $result = Author::deleteRecord($id);
         if ($result) {
             toastr()->success('Xóa thành công');
-            return redirect()->route('adgetListUser')->with('success', 'Xóa thành công!');
+            return redirect()->route('adgetListAuthor')->with('success', 'Xóa thành công!');
         } else {
             toastr()->error('Xóa thất bại');
-            return redirect()->route('adgetListUser')->with('error', 'Xóa thất bại!');
+            return redirect()->route('adgetListAuthor')->with('error', 'Xóa thất bại!');
         }
     }
 

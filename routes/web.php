@@ -1,5 +1,5 @@
 <?php
-Route::get('/', 'Admins\AdminController@index')->name('home');
+Route::get('/', 'Admins\AdminController@index')->name('getHome');
 
 Route::prefix('/ad')->group(function () {
 
@@ -9,6 +9,7 @@ Route::prefix('/ad')->group(function () {
     Route::middleware(['check_admin'])->group(function () {
         // Home
         Route::get('/', 'Admins\AdminController@getHome')->name('adgetHome');
+        Route::get('/logout', 'Admins\AdminController@getLogout')->name('adgetLogout');
         // Route::post('/config', 'AdminController@updateConfig')->name('adupdateConfig');
 
         // Jobs
@@ -87,6 +88,35 @@ Route::prefix('/ad')->group(function () {
             Route::post('/edit/{id}', 'Admins\EbookController@postEditEbook')->name('adpostEditEbook');
 
             Route::get('/del/{id}', 'Admins\EbookController@getDelEbook')->name('adgetDelEbook');
+        });
+
+        // Province
+        Route::prefix('/province')->group(function () {
+            Route::get('/list', 'Admins\ProvinceController@index')->name('adgetListProvince');
+            Route::get('/detail/{id}', 'Admins\ProvinceController@getDetailProvince')->name('adgetDetailProvince');
+        });
+
+        // Degree
+        Route::prefix('/degree')->group(function () {
+            Route::get('/list', 'Admins\DegreeController@index')->name('adgetListDegree');
+        });
+
+        // Company Size
+        Route::prefix('/company-size')->group(function () {
+            Route::get('/list', 'Admins\CompanyController@getCompanySize')->name('adgetListCompanySize');
+        });
+
+        // Authors
+        Route::prefix('/author')->group(function () {
+            Route::get('/list/{page?}/{query?}', 'Admins\AuthorController@index')->name('adgetListAuthor');
+
+            Route::get('/add', 'Admins\AuthorController@getAddAuthor')->name('adgetAddAuthor');
+            Route::post('/add', 'Admins\AuthorController@postAddAuthor')->name('adpostAddAuthor');
+
+            Route::get('/edit/{id}', 'Admins\AuthorController@getEditAuthor')->name('adgetEditAuthor');
+            Route::post('/edit/{id}', 'Admins\AuthorController@postEditAuthor')->name('adpostEditAuthor');
+
+            Route::get('/del/{id}', 'Admins\AuthorController@getDelAuthor')->name('adgetDelAuthor');
         });
     });
 

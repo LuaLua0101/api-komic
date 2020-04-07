@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use DB;
+use File;
 use Illuminate\Database\Eloquent\Model;
 
 class Job extends Model
@@ -100,7 +102,7 @@ class Job extends Model
 
     public static function getList($page = 1)
     {
-$page--;
+        $page--;
         try {
             return job::orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
         } catch (Throwable $e) {
@@ -121,9 +123,12 @@ $page--;
     public static function getSum($query = null)
     {
         try {
-            if($query)
-            return ceil(Job::where('title', 'like', '%' . $query . '%')->count() / 10);
-            else return ceil(Job::count() / 10);
+            if ($query) {
+                return ceil(Job::where('title', 'like', '%' . $query . '%')->count() / 10);
+            } else {
+                return ceil(Job::count() / 10);
+            }
+
         } catch (Throwable $e) {
             return null;
         }
@@ -132,7 +137,14 @@ $page--;
     public static function deleteRecord($id)
     {
         try {
-            return Job::where('id', $id)->delete();
+            $model = Job::find($id);
+
+            $image_path = 'public/admins/img/jobs/' . explode("?", $model->cover)[0];
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+
+            return $model->delete();
         } catch (Throwable $e) {
             return null;
         }

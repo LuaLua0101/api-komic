@@ -1,5 +1,5 @@
 @extends('main')
-@section('title', 'Thêm việc làm mới')
+@section('title', 'Chỉnh sửa thông tin người dùng')
 @section('user_active', 'open')
 @section('content')
 <div class="row">
@@ -9,33 +9,33 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-settings font-red"></i>
-                    <span class="caption-subject font-red sbold uppercase">Chỉnh sửa công việc</span>
+                    <span class="caption-subject font-red sbold uppercase">Chỉnh sửa thông tin người dùng</span>
                 </div>
             </div>
             <div class="portlet-body">
                 <!-- BEGIN FORM-->
-                <form action="{{route('adpostEditJob', ['id' => $data->id])}}" method="POST" class="form-horizontal" enctype='multipart/form-data'>
+                <form action="{{route('adpostEditUser', ['id' => $data->id])}}" method="POST" class="form-horizontal" enctype='multipart/form-data'>
                     {{ csrf_field() }}
                     <div class="form-body">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Tiêu đề việc làm
+                            <label class="control-label col-md-3">Họ tên
                                 <span class="required" aria-required="true"> * </span>
                             </label>
                             <div class="col-md-4">
-                                <input type="text" id="title" name="title" data-required="1" class="form-control" required="" value="{{$data->title}}">
+                                <input type="text" id="name" name="name" data-required="1" class="form-control" required="" value="{{$data->name}}">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-3">Hình cover
+                            <label class="control-label col-md-3">Hình avatar
                                 <span class="required" aria-required="true"> * </span>
                             </label>
                             <div class="col-md-4">
-                                <input type="file" class="custom-file-input" id="form-avatar" name="cover">
-                                <label class="custom-file-label" for="form-avatar">@if($data->cover != "")
-                                    {{substr($data->cover,0,strpos($data->cover,'?'))}} @else Chọn hình
+                                <input type="file" class="custom-file-input" id="form-cover" name="cover">
+                                <label class="custom-file-label" for="form-avatar">@if($data->avatar != "")
+                                    {{substr($data->avatar,0,strpos($data->avatar,'?'))}} @else Chọn hình
                                     @endif </label>
-                                <img id="file-show" @if($data->cover != "")
-                                src="{{asset('public/admins/img/jobs/' .$data->cover)}}" @else class="hidden" @endif >
+                                <img id="file-show" @if($data->avatar != "")
+                                src="{{asset('public/admins/img/users/' .$data->avatar)}}" @else class="hidden" @endif >
                             </div>
                         </div>
                         <div class="form-actions">

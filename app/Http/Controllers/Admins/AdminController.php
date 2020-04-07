@@ -16,6 +16,7 @@ class AdminController extends Controller
 
     public function getLogin()
     {
+
         if (auth()->check()) {
             if (Auth::user()->admin == 1) {
                 return redirect()->route('adgetHome');
@@ -27,8 +28,15 @@ class AdminController extends Controller
         }
     }
 
+    public function getLogout()
+    {
+        Auth::logout();
+        return redirect()->route('adgetLogin');
+    }
+
     public function postLogin(Request $request)
     {
+        // dd(Hash::make($request->input('password')));
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
             // Authentication passed...
             if (Auth::user()->admin == 1) {

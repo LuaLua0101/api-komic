@@ -1,5 +1,5 @@
 @extends('main')
-@section('title', 'Thêm doanh nghiệp mới')
+@section('title', 'Thêm công ty mới')
 @section('company_active', 'open')
 @section('content')
 <div class="row">
@@ -9,7 +9,7 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="icon-settings font-red"></i>
-                    <span class="caption-subject font-red sbold uppercase">Thêm doanh nghiệp mới</span>
+                    <span class="caption-subject font-red sbold uppercase">Thêm công ty mới</span>
                 </div>
             </div>
             <div class="portlet-body">
@@ -18,11 +18,18 @@
                     {{ csrf_field() }}
                     <div class="form-body">
                         <div class="form-group">
-                            <label class="control-label col-md-3">Tên doanh nghiệp
+                            <label class="control-label col-md-3">Tên công ty
                                 <span class="required" aria-required="true"> * </span>
                             </label>
                             <div class="col-md-4">
                                 <input type="text" id="title" name="title" data-required="1" class="form-control" required=""> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Địa chỉ công ty
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="address" name="address" data-required="1" class="form-control" required=""> </div>
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">Logo công ty

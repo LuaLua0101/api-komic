@@ -2,13 +2,16 @@
 
 namespace App\Models;
 
+use DB;
+use File;
 use Illuminate\Database\Eloquent\Model;
 
 class TestEbook extends Model
 {
     protected $table = 'test_ebooks';
 
-    static function ebookTangLuong() {
+    public static function ebookTangLuong()
+    {
         try {
             DB::beginTransaction();
             $t = TestEbook::where('block_id', 'EBOOK_TANG_LUONG')->take(4)->get();
@@ -19,7 +22,8 @@ class TestEbook extends Model
         }
     }
 
-    static function ebookChoBan() {
+    public static function ebookChoBan()
+    {
         try {
             DB::beginTransaction();
             $t = TestEbook::where('block_id', 'EBOOK_CHO_BAN')->take(4)->get();
@@ -30,7 +34,8 @@ class TestEbook extends Model
         }
     }
 
-    static function testMoiNhat() {
+    public static function testMoiNhat()
+    {
         try {
             DB::beginTransaction();
             $t = TestEbook::orderBy('created_at', 'desc')->take(4)->get();
@@ -41,7 +46,8 @@ class TestEbook extends Model
         }
     }
 
-    static function banLaAi() {
+    public static function banLaAi()
+    {
         try {
             DB::beginTransaction();
             $t = TestEbook::where('block_id', 'BAN_LA_AI')->take(4)->get();
@@ -90,7 +96,7 @@ class TestEbook extends Model
 
     public static function getListTest($page = 1)
     {
-$page--;
+        $page--;
         try {
             return TestEbook::orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
         } catch (Throwable $e) {
@@ -100,7 +106,7 @@ $page--;
 
     public static function getListEbook($page = 1)
     {
-$page--;
+        $page--;
         try {
             return TestEbook::orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
         } catch (Throwable $e) {
@@ -118,7 +124,6 @@ $page--;
         }
     }
 
-
     public static function getListQueryEbook($query, $page = 0)
     {
         $page--;
@@ -132,9 +137,12 @@ $page--;
     public static function getSumTest($query = null)
     {
         try {
-            if($query)
-            return ceil(TestEbook::where('title', 'like', '%' . $query . '%')->count() / 10);
-            else return ceil(TestEbook::count() / 10);
+            if ($query) {
+                return ceil(TestEbook::where('title', 'like', '%' . $query . '%')->count() / 10);
+            } else {
+                return ceil(TestEbook::count() / 10);
+            }
+
         } catch (Throwable $e) {
             return null;
         }
@@ -143,9 +151,12 @@ $page--;
     public static function getSumEbook($query = null)
     {
         try {
-            if($query)
-            return ceil(TestEbook::where('title', 'like', '%' . $query . '%')->count() / 10);
-            else return ceil(TestEbook::count() / 10);
+            if ($query) {
+                return ceil(TestEbook::where('title', 'like', '%' . $query . '%')->count() / 10);
+            } else {
+                return ceil(TestEbook::count() / 10);
+            }
+
         } catch (Throwable $e) {
             return null;
         }
@@ -154,7 +165,14 @@ $page--;
     public static function deleteRecordTest($id)
     {
         try {
-            return TestEbook::where('id', $id)->delete();
+            $model = TestEbook::find($id);
+
+            $image_path = 'public/admins/img/tests/' . explode("?", $model->cover)[0];
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+
+            return $model->delete();
         } catch (Throwable $e) {
             return null;
         }
@@ -163,7 +181,14 @@ $page--;
     public static function deleteRecordEbook($id)
     {
         try {
-            return TestEbook::where('id', $id)->delete();
+            $model = TestEbook::find($id);
+
+            $image_path = 'public/admins/img/ebooks/' . explode("?", $model->cover)[0];
+            if (File::exists($image_path)) {
+                File::delete($image_path);
+            }
+
+            return $model->delete();
         } catch (Throwable $e) {
             return null;
         }

@@ -1,5 +1,5 @@
 @extends('main')
-@section('title', 'Danh sách doanh nghiệp')
+@section('title', 'Danh sách công ty')
 @section('company_active', 'open')
 @section('content')
 <div class="row">
@@ -11,14 +11,17 @@
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-cogs"></i>Danh sách doanh nghiệp </div>
+                    <i class="fa fa-cogs"></i>Danh sách công ty </div>
             </div>
             <div class="portlet-body flip-scroll">
                 <table class="table table-bordered table-striped table-condensed flip-content">
                     <thead class="flip-content">
                         <tr>
                             <th width="5%"> ID </th>
-                            <th> Tiêu đề </th>
+                            <th> Tên công ty </th>
+                            <th> Điện thoại</th>
+                            <th> Email </th>
+                            <th> Quy mô công ty </th>
                             <th width="5%"> Sửa</th>
                             <th width="5%"> Xóa</th>
                         </tr>
@@ -27,12 +30,15 @@
                         @foreach($data as $item)
                         <tr>
                             <td> Company0{{$item->id}}</td>
-                            <td> {{$item->title}} </td>
+                            <td> {{$item->name}} </td>
+                            <td> {{$item->phone}} </td>
+                            <td> {{$item->email}} </td>
+                            <td> {{\App\Models\CompanySize::find($item->company_size)->size}} </td>
                             <td>
                                 <a class="btn delete-btn" href="{{route('adgetEditCompany', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
                             </td>
                             <td>
-                                <a class="btn delete-btn" href="{{route('adgetDelCompany', ['id' => $item->id])}}" onclick="return confirm('Bạn có chắc chắn xóa sản phẩm này?');">
+                                <a class="btn delete-btn" href="{{route('adgetDelCompany', ['id' => $item->id])}}" onclick="return confirm('Bạn có chắc chắn xóa công ty này?');">
                                     <i class="icon icon-close"></i>
                                 </a>
                             </td>
@@ -43,23 +49,24 @@
                 <div class="row">
                     <div class="col-md-5 col-sm-5">
                     </div>
-                        <div class="col-md-7 col-sm-7">
-                            <div class="dataTables_paginate paging_bootstrap_extended" id="sample_2_paginate">
-                                <div class="pagination-panel"> Trang <a href="{{route('adgetListCompany', ['page' => $data->prev])}}" class="btn btn-sm default prev @if($data->page == 1) disabled @endif">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                                <input type="text" class="pagination-panel-input form-control input-sm input-inline input-mini"
-                                maxlenght="5" style="text-align:center; margin: 0 5px;" value={{$data->page}}>
+                    <div class="col-md-7 col-sm-7">
+                        <div class="dataTables_paginate paging_bootstrap_extended" id="sample_2_paginate">
+                            <div class="pagination-panel"> Trang <a href="{{route('adgetListCompany', ['page' => $data->prev])}}" class="btn btn-sm default prev @if($data->page == 1) disabled @endif">
+                                    <i class="fa fa-angle-left"></i>
+                                </a>
+                                <input type="text" class="pagination-panel-input form-control input-sm input-inline input-mini" maxlenght="5" style="text-align:center; margin: 0 5px;" value={{$data->page}}>
                                 <a href="{{route('adgetListCompany', ['page' => $data->next])}}" class="btn btn-sm default next @if($data->page == $data->sum) disabled @endif">
                                     <i class="fa fa-angle-right"></i>
                                 </a> / <span class="pagination-panel-total">{{$data->sum}}</span>
                             </div>
-                        </div></div></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-@else
-@include('admin.components.empty_table')
-@endif
+        @else
+        @include('admin.components.empty_table')
+        @endif
     </div>
 </div>
 @endsection

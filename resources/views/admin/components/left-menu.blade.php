@@ -27,18 +27,23 @@
             <li class="nav-item @yield('company_active')">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-layers"></i>
-                    <span class="title">Quản lý doanh nghiệp</span>
+                    <span class="title">Quản lý công ty</span>
                     <span class="arrow"></span>
                 </a>
                 <ul class="sub-menu">
                     <li class="nav-item  ">
                         <a href="{{ route('adgetAddCompany') }}" class="nav-link ">
-                            <span class="title">Thêm doanh nghiệp mới</span>
+                            <span class="title">Thêm công ty mới</span>
                         </a>
                     </li>
                     <li class="nav-item  ">
                         <a href="{{ route('adgetListCompany') }}" class="nav-link ">
-                            <span class="title">Danh sách doanh nghiệp</span>
+                            <span class="title">Danh sách công ty</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ route('adgetListCompanySize') }}" class="nav-link ">
+                            <span class="title">Quy mô công ty</span>
                         </a>
                     </li>
                 </ul>
@@ -106,6 +111,53 @@
                     <li class="nav-item  ">
                         <a href="{{ route('adgetListEbook') }}" class="nav-link ">
                             <span class="title">Danh sách Ebook</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item @yield('province_active')">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-layers"></i>
+                    <span class="title">Quản lý tỉnh thành</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="{{ route('adgetListProvince') }}" class="nav-link ">
+                            <span class="title">Danh sách tỉnh thành</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item @yield('degree_active')">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-layers"></i>
+                    <span class="title">Quản lý bằng cấp/chứng chỉ</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="{{ route('adgetListDegree') }}" class="nav-link ">
+                            <span class="title">Danh sách bằng cấp</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item @yield('author_active')">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-layers"></i>
+                    <span class="title">Quản lý giảng viên</span>
+                    <span class="arrow"></span>
+                </a>
+                <ul class="sub-menu">
+                    <li class="nav-item  ">
+                        <a href="{{ route('adgetAddAuthor') }}" class="nav-link ">
+                            <span class="title">Thêm giảng viên mới</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ route('adgetListAuthor') }}" class="nav-link ">
+                            <span class="title">Danh sách giảng viên</span>
                         </a>
                     </li>
                 </ul>

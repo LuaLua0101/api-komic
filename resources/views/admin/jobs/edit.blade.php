@@ -1,5 +1,5 @@
 @extends('main')
-@section('title', 'Thêm việc làm mới')
+@section('title', 'Chỉnh sửa công việc')
 @section('job_active', 'open')
 @section('content')
 <div class="row">

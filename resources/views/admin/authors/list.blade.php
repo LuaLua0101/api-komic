@@ -1,6 +1,6 @@
 @extends('main')
-@section('title', 'Danh sách ebook')
-@section('testebook_active', 'open')
+@section('title', 'Danh sách giảng viên')
+@section('author_active', 'open')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -12,14 +12,14 @@
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-cogs"></i>Danh sách ebook </div>
+                    <i class="fa fa-cogs"></i>Danh sách giảng viên </div>
             </div>
             <div class="portlet-body flip-scroll">
                 <table class="table table-bordered table-striped table-condensed flip-content">
                     <thead class="flip-content">
                         <tr>
                             <th width="5%"> ID </th>
-                            <th> Tên ebook </th>
+                            <th> Họ tên </th>
                             <th width="5%"> Sửa</th>
                             <th width="5%"> Xóa</th>
                         </tr>
@@ -27,13 +27,13 @@
                     <tbody>
                         @foreach($data as $item)
                         <tr>
-                            <td> Ebook0{{$item->id}}</td>
-                            <td> {{$item->title}} </td>
+                            <td> Author0{{$item->id}}</td>
+                            <td> {{$item->name}} </td>
                             <td>
-                                <a class="btn delete-btn" href="{{route('adgetEditEbook', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
+                                <a class="btn delete-btn" href="{{route('adgetEditAuthor', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
                             </td>
                             <td>
-                                <a class="btn delete-btn" href="{{route('adgetDelEbook', ['id' => $item->id])}}" onclick="return confirm('Bạn có chắc chắn xóa ebook này?');">
+                                <a class="btn delete-btn" href="{{route('adgetDelAuthor', ['id' => $item->id])}}" onclick="return confirm('Bạn có chắc chắn xóa giảng viên này?');">
                                     <i class="icon icon-close"></i>
                                 </a>
                             </td>
@@ -46,11 +46,11 @@
                     </div>
                     <div class="col-md-7 col-sm-7">
                         <div class="dataTables_paginate paging_bootstrap_extended" id="sample_2_paginate">
-                            <div class="pagination-panel"> Trang <a href="{{route('adgetListEbook', ['page' => $data->prev])}}" class="btn btn-sm default prev @if($data->page == 1) disabled @endif">
+                            <div class="pagination-panel"> Trang <a href="{{route('adgetListAuthor', ['page' => $data->prev])}}" class="btn btn-sm default prev @if($data->page == 1) disabled @endif">
                                     <i class="fa fa-angle-left"></i>
                                 </a>
                                 <input type="text" class="pagination-panel-input form-control input-sm input-inline input-mini" maxlenght="5" style="text-align:center; margin: 0 5px;" value={{$data->page}}>
-                                <a href="{{route('adgetListEbook', ['page' => $data->next])}}" class="btn btn-sm default next @if($data->page == $data->sum) disabled @endif">
+                                <a href="{{route('adgetListAuthor', ['page' => $data->next])}}" class="btn btn-sm default next @if($data->page == $data->sum) disabled @endif">
                                     <i class="fa fa-angle-right"></i>
                                 </a> / <span class="pagination-panel-total">{{$data->sum}}</span>
                             </div>
