@@ -38,6 +38,9 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('getMyCV', 'Api\UserController@getMyCV');
     Route::post('updateFCM', 'Api\UserController@updateFCM');
 
+    Route::get('getActiveUser', 'Api\UserController@getActiveUser');
+    Route::post('postActiveUser', 'Api\UserController@postActiveUser');
+            
     Route::post('comics', 'Api\ApiController@testApi')->middleware(['can:get-transactions']);
 });
 

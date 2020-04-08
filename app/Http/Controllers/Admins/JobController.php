@@ -77,7 +77,12 @@ class JobController extends Controller
             'description' => $request->description,
             'salary_from' => $request->salary_from,
             'salary_to' => $request->salary_to,
+            'career_id' => $request->career,
             'company_id' => intval($request->company),
+            'job_type' => intval($request->type),
+            'benefits' => $request->benefits,
+            'requirements' => $request->requirements,
+            'end_date' => $request->end_date,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
@@ -124,8 +129,13 @@ class JobController extends Controller
             'description' => $request->description,
             'salary_from' => $request->salary_from,
             'salary_to' => $request->salary_to,
+            'career_id' => $request->career,
             'company_id' => intval($request->company),
-            'created_at' => date('Y-m-d H:i:s'),
+            'job_type' => intval($request->type),
+            'benefits' => $request->benefits,
+            'requirements' => $request->requirements,
+            'end_date' => $request->end_date,
+            'updated_at' => date('Y-m-d H:i:s'),
         ];
 
         if ($cover != "") {

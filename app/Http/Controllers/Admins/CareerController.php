@@ -36,7 +36,7 @@ class CareerController extends Controller
         }
 
         $action = [
-            'title' => 'Thêm mới giảng viên',
+            'title' => 'Thêm mới ngành nghề',
             'link' => route('adgetAddCareer'),
             'search_link' => route('adgetListCareer'),
         ];
@@ -46,7 +46,7 @@ class CareerController extends Controller
     public function getAddCareer(Request $request)
     {
         $action = [
-            'title' => 'Danh sách giảng viên',
+            'title' => 'Danh sách ngành nghề',
             'link' => route('adgetListCareer'),
             'search_link' => route('adgetListCareer'),
         ];

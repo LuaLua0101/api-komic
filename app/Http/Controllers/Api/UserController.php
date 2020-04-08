@@ -27,4 +27,25 @@ class UserController extends Controller
             return response()->json(['error'], 500);
         }
     }
+
+    public function getActiveUser()
+    {
+        $t = Account::active();
+        if ($t) {
+            return response()->json([$t], 200);
+        } else {
+            return response()->json(['error'], 500);
+        }
+    }
+
+    public function postActiveUser(Request $request)
+    {
+        // $t = Account::updateFCM($request->fcm_token);
+        // if ($t) {
+        //     return response()->json([], 200);
+        // } else {
+        //     return response()->json(['error'], 500);
+        // }
+    }
+    
 }
