@@ -26,6 +26,66 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-md-3">Mô tả ngắn
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" id="short_description" name="short_description" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->short_description : ''}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Mô tả đầy đủ
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <textarea id="description" name="description">{{isset($data) ? $data->description : ''}}</textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">URL
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" id="url" name="url" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->url : ''}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Số lượng tải
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="number" id="buy" name="buy" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->buy_count : ''}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Lượt review
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="number" id="review" name="review" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->review_count : ''}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Chọn block hiển thị
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                @php $list = \App\Models\Block::get() @endphp
+                                <select class="form-control select2me select2-hidden-accessible" name="block" tabindex="-1" aria-hidden="true">
+                                    <option value="0">Chọn block...</option>
+                                    @if(isset($data))
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}" @if($data->block_id == $value->id) selected @endif>{{$value->name}}</option>
+                                    @endforeach
+                                    @else
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}">{{$value->name}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-md-3">Hình cover
                                 <span class="required" aria-required="true"> * </span>
                             </label>

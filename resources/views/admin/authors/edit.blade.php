@@ -26,6 +26,38 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-md-3">Giới tính
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <div class="mt-radio-list" data-error-container="#form_2_membership_error">
+                                    <label class="mt-radio">
+                                        <input type="radio" name="gender" value="0" @if(isset($data) && $data->gender = 0) checked @endif> Nữ
+                                        <span></span>
+                                    </label>
+                                    <label class="mt-radio">
+                                        <input type="radio" name="gender" value="1" @if(isset($data) && $data->gender = 1) checked @endif> Nam
+                                        <span></span>
+                                    </label>
+                                </div>
+                                <div id="form_2_membership_error"> </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Điện thoại
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="text" id="phone" name="phone" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->phone :''}}"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Email
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                <input type="email" id="email" name="email" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->email :''}}"> </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-md-3">Hình avatar
                                 <span class="required" aria-required="true"> * </span>
                             </label>

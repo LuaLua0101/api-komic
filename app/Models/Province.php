@@ -34,4 +34,14 @@ class Province extends Model
             return null;
         }
     }
+
+    public static function getNameById($id)
+    {
+        try {
+            $model = Province::find($id);
+            return $model ? $model->name : '';
+        } catch (Throwable $e) {
+            return null;
+        }
+    }
 }

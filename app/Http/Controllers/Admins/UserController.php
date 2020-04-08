@@ -55,7 +55,6 @@ class UserController extends Controller
 
     public function postAddUser(Request $request)
     {
-        dd($request);
         // name
         $name = $request->name;
         if (!$name) {
@@ -74,6 +73,12 @@ class UserController extends Controller
         $data = [
             'name' => $name,
             'avatar' => $cover,
+            'gender' => intval($request->gender),
+            'phone'=>$request->phone,
+            'email'=>$request->email,
+            'address'=>$request->address,
+            'dob'=>$request->dob,
+            'admin' => isset($request->admin) ? 1 : null,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
@@ -116,6 +121,12 @@ class UserController extends Controller
 
         $data = [
             'name' => $name,
+            'gender' => intval($request->gender),
+            'phone'=>$request->phone,
+            'email'=>$request->email,
+            'address'=>$request->address,
+            'dob'=>$request->dob,
+            'admin' => isset($request->admin) ? 1 : null,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 

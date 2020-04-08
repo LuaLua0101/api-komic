@@ -1,6 +1,6 @@
 @extends('main')
-@section('title', 'Danh sách giảng viên')
-@section('author_active', 'open')
+@section('title', 'Danh sách ngành nghề')
+@section('career_active', 'open')
 @section('content')
 <div class="row">
     <div class="col-md-12">
@@ -12,17 +12,14 @@
         <div class="portlet box green">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-cogs"></i>Danh sách giảng viên </div>
+                    <i class="fa fa-cogs"></i>Danh sách ngành nghề </div>
             </div>
             <div class="portlet-body flip-scroll">
                 <table class="table table-bordered table-striped table-condensed flip-content">
                     <thead class="flip-content">
                         <tr>
                             <th width="5%"> ID </th>
-                            <th> Họ tên </th>
-                            <th> Giới tính </th>
-                            <th> Số điện thoại </th>
-                            <th> Email </th>
+                            <th> Ngành nghề </th>
                             <th width="5%"> Sửa</th>
                             <th width="5%"> Xóa</th>
                         </tr>
@@ -30,16 +27,13 @@
                     <tbody>
                         @foreach($data as $item)
                         <tr>
-                            <td> Author0{{$item->id}}</td>
+                            <td> Career0{{$item->id}}</td>
                             <td> {{$item->name}} </td>
-                            <td> {{$item->gender == 0 ? 'Nữ' : 'Nam'}} </td>
-                            <td> {{$item->phone}} </td>
-                            <td> {{$item->email}} </td>
                             <td>
-                                <a class="btn delete-btn dt-button buttons-pdf buttons-html5  purple btn-outline" href="{{route('adgetEditAuthor', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
+                                <a class="btn delete-btn dt-button buttons-pdf buttons-html5  purple btn-outline" href="{{route('adgetEditCareer', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
                             </td>
                             <td>
-                                <a class="btn delete-btn dt-button buttons-pdf buttons-html5 red btn-outline" href="{{route('adgetDelAuthor', ['id' => $item->id]) }}" onclick="return confirm('Bạn có chắc chắn xóa giảng viên này?');">
+                                <a class="btn delete-btn dt-button buttons-pdf buttons-html5 red btn-outline" href="{{route('adgetDelCareer', ['id' => $item->id]) }}" onclick="return confirm('Bạn có chắc chắn xóa ngành nghề này?');">
                                     <i class="icon icon-close"></i>
                                 </a>
                             </td>
@@ -52,11 +46,11 @@
                     </div>
                     <div class="col-md-7 col-sm-7">
                         <div class="dataTables_paginate paging_bootstrap_extended" id="sample_2_paginate">
-                            <div class="pagination-panel"> Trang <a href="{{route('adgetListAuthor', ['page' => $data->prev]). '?query='. request()->query('query')}}" class="btn btn-sm default prev @if($data->page == 1) disabled @endif">
+                            <div class="pagination-panel"> Trang <a href="{{route('adgetListCareer', ['page' => $data->prev]). '?query='. request()->query('query')}}" class="btn btn-sm default prev @if($data->page == 1) disabled @endif">
                                     <i class="fa fa-angle-left"></i>
                                 </a>
                                 <input type="text" class="pagination-panel-input form-control input-sm input-inline input-mini" maxlenght="5" style="text-align:center; margin: 0 5px;" value={{$data->page}}>
-                                <a href="{{route('adgetListAuthor', ['page' => $data->next]). '?query='. request()->query('query')}}" class="btn btn-sm default next @if($data->page == $data->sum) disabled @endif">
+                                <a href="{{route('adgetListCareer', ['page' => $data->next]). '?query='. request()->query('query')}}" class="btn btn-sm default next @if($data->page == $data->sum) disabled @endif">
                                     <i class="fa fa-angle-right"></i>
                                 </a> / <span class="pagination-panel-total">{{$data->sum}}</span>
                             </div>

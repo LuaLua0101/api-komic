@@ -28,6 +28,7 @@
                             <th> Điện thoại</th>
                             <th> Email </th>
                             <th> Quy mô công ty </th>
+                            <th> Tỉnh thành </th>
                             <th width="5%"> Sửa</th>
                             <th width="5%"> Xóa</th>
                         </tr>
@@ -39,7 +40,8 @@
                             <td> {{$item->name}} </td>
                             <td> {{$item->phone}} </td>
                             <td> {{$item->email}} </td>
-                            <td> {{\App\Models\CompanySize::find($item->company_size)->size}} </td>
+                            <td> {{\App\Models\CompanySize::getNameById($item->company_size)}} </td>
+                            <td> {{\App\Models\Province::getNameById($item->province_id)}} </td>
                             <td>
                                 <a class="btn delete-btn dt-button buttons-pdf buttons-html5  purple btn-outline" href="{{route('adgetEditCompany', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
                             </td>

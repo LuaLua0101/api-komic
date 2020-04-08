@@ -171,6 +171,25 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item @yield('career_active')">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-user-female"></i>
+                    <span class="title">Quản lý ngành nghề</span>
+                    <span class="arrow @yield('career_active')"></span>
+                </a>
+                <ul class="sub-menu" @if(View::hasSection('career_active')) style=" display: block" @else style="display: none" @endif">
+                    <li class="nav-item  ">
+                        <a href="{{ route('adgetAddCareer') }}" class="nav-link ">
+                            <span class="title">Thêm ngành nghề mới</span>
+                        </a>
+                    </li>
+                    <li class="nav-item  ">
+                        <a href="{{ route('adgetListCareer') }}" class="nav-link ">
+                            <span class="title">Danh sách ngành nghề</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="heading">
                 <h3 class="uppercase">Cấu hình hệ thống</h3>
             </li>

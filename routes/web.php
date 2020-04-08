@@ -120,6 +120,19 @@ Route::prefix('/ad')->group(function () {
 
             Route::get('/del/{id}', 'Admins\AuthorController@getDelAuthor')->name('adgetDelAuthor');
         });
+
+        // Careers
+        Route::prefix('/career')->group(function () {
+            Route::get('/list/{page?}', 'Admins\CareerController@index')->name('adgetListCareer');
+
+            Route::get('/add', 'Admins\CareerController@getAddCareer')->name('adgetAddCareer');
+            Route::post('/add', 'Admins\CareerController@postAddCareer')->name('adpostAddCareer');
+
+            Route::get('/edit/{id}', 'Admins\CareerController@getEditCareer')->name('adgetEditCareer');
+            Route::post('/edit/{id}', 'Admins\CareerController@postEditCareer')->name('adpostEditCareer');
+
+            Route::get('/del/{id}', 'Admins\CareerController@getDelCareer')->name('adgetDelCareer');
+        });
     });
 
 });

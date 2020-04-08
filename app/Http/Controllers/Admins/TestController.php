@@ -61,6 +61,18 @@ class TestController extends Controller
             $title = "Test " . time();
         }
 
+        // buy count
+        $buy = $request->buy;
+        if (!$buy) {
+            $buy =0;
+        }
+
+        // review count
+        $review = $request->review;
+        if (!$review) {
+            $review =0;
+        }
+        
         // coverFile
         $coverFile = $request->cover;
         $cover = "";
@@ -72,7 +84,15 @@ class TestController extends Controller
 
         $data = [
             'title' => $title,
+            'short_description' => $request->short_description,
+            'description' => $request->description,
+            'price' => $request->price,
+            'author_id' => $request->author,
+            'block_id' => $request->block_id,
+            'url' => $request->url,
             'cover' => $cover,
+            'buy_count' => $buy,
+            'review_count' => $review,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
@@ -104,6 +124,18 @@ class TestController extends Controller
             $title = "Test " . time();
         }
 
+        // buy count
+        $buy = $request->buy;
+        if (!$buy) {
+            $buy =0;
+        }
+
+        // review count
+        $review = $request->review;
+        if (!$review) {
+            $review =0;
+        }
+        
         // coverFile
         $coverFile = $request->cover;
         $cover = "";
@@ -115,6 +147,14 @@ class TestController extends Controller
 
         $data = [
             'title' => $title,
+            'short_description' => $request->short_description,
+            'description' => $request->description,
+            'price' => $request->price,
+            'author_id' => $request->author,
+            'block_id' => $request->block_id,
+            'url' => $request->url,
+            'buy_count' => $buy,
+            'review_count' => $review,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 

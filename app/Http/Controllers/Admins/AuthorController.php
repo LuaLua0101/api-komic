@@ -72,6 +72,9 @@ class AuthorController extends Controller
 
         $data = [
             'name' => $name,
+            'gender' => intval($request->gender),
+            'phone'=>$request->phone,
+            'email'=>$request->email,
             'avatar' => $cover,
             'created_at' => date('Y-m-d H:i:s'),
         ];
@@ -115,6 +118,9 @@ class AuthorController extends Controller
 
         $data = [
             'name' => $name,
+            'gender' => intval($request->gender),
+            'phone'=>$request->phone,
+            'email'=>$request->email,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 

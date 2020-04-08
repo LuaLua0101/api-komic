@@ -61,6 +61,18 @@ class EbookController extends Controller
             $title = "Ebook " . time();
         }
 
+        // buy count
+        $buy = $request->buy;
+        if (!$buy) {
+            $buy =0;
+        }
+
+        // review count
+        $review = $request->review;
+        if (!$review) {
+            $review =0;
+        }
+        
         // coverFile
         $coverFile = $request->cover;
         $cover = "";
@@ -74,6 +86,12 @@ class EbookController extends Controller
             'title' => $title,
             'cover' => $cover,
             'type' => 1,
+            'short_description' => $request->short_description,
+            'description' => $request->description,
+            'block_id' => $request->block_id,
+            'url' => $request->url,
+            'buy_count' => $buy,
+            'review_count' => $review,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
@@ -105,6 +123,18 @@ class EbookController extends Controller
             $title = "Ebook " . time();
         }
 
+        // buy count
+        $buy = $request->buy;
+        if (!$buy) {
+            $buy =0;
+        }
+
+        // review count
+        $review = $request->review;
+        if (!$review) {
+            $review =0;
+        }
+        
         // coverFile
         $coverFile = $request->cover;
         $cover = "";
@@ -116,6 +146,12 @@ class EbookController extends Controller
 
         $data = [
             'title' => $title,
+            'short_description' => $request->short_description,
+            'description' => $request->description,
+            'block_id' => $request->block_id,
+            'url' => $request->url,
+            'buy_count' => $buy,
+            'review_count' => $review,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
