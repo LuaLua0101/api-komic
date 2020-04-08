@@ -33,6 +33,60 @@
                                 <input type="text" id="address" name="address" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->address :''}}"> </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-md-3">Điện thoại công ty
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="phone" name="phone" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->phone :''}}"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Email công ty
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input type="email" id="email" name="email" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->email :''}}"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Chọn tỉnh thành
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                @php $list = \App\Models\Province::get() @endphp
+                                <select class="form-control select2me select2-hidden-accessible" name="province" tabindex="-1" aria-hidden="true">
+                                    <option value="0">Chọn tỉnh thành...</option>
+                                    @if(isset($data))
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}" @if($data->province_id == $value->id) selected @endif>{{$value->name}}</option>
+                                    @endforeach
+                                    @else
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}">{{$value->name}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Quy mô công ty
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                @php $list = \App\Models\CompanySize::get() @endphp
+                                <select class="form-control select2me select2-hidden-accessible" name="size" tabindex="-1" aria-hidden="true">
+                                    <option value="0">Chọn quy mô...</option>
+                                    @if(isset($data))
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}" @if($data->company_size == $value->id) selected @endif>{{$value->size}}</option>
+                                    @endforeach
+                                    @else
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}">{{$value->size}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-md-3">Logo công ty
                                 <span class="required" aria-required="true"> * </span>
                             </label>

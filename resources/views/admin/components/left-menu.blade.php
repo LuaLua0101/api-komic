@@ -86,13 +86,13 @@
                     </li>
                 </ul>
             </li>
-            <li class="nav-item @yield('testebook_active')">
+            <li class="nav-item @yield('test_active')">
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-docs"></i>
-                    <span class="title">Quản lý bài test/ebook</span>
-                    <span class="arrow @yield('testebook_active')"></span>
+                    <span class="title">Quản lý bài test</span>
+                    <span class="arrow @yield('test_active')"></span>
                 </a>
-                <ul class="sub-menu" @if(View::hasSection('testebook_active')) style=" display: block" @else style="display: none" @endif">
+                <ul class="sub-menu" @if(View::hasSection('test_active')) style=" display: block" @else style="display: none" @endif">
                     <li class="nav-item  ">
                         <a href="{{ route('adgetAddTest') }}" class="nav-link ">
                             <span class="title">Thêm bài test mới</span>
@@ -103,6 +103,15 @@
                             <span class="title">Danh sách bài test</span>
                         </a>
                     </li>
+                </ul>
+            </li>
+            <li class="nav-item @yield('ebook_active')">
+                <a href="javascript:;" class="nav-link nav-toggle">
+                    <i class="icon-docs"></i>
+                    <span class="title">Quản lý ebook</span>
+                    <span class="arrow @yield('ebook_active')"></span>
+                </a>
+                <ul class="sub-menu" @if(View::hasSection('ebook_active')) style=" display: block" @else style="display: none" @endif">
                     <li class="nav-item  ">
                         <a href="{{ route('adgetAddEbook') }}" class="nav-link ">
                             <span class="title">Thêm Ebook mới</span>

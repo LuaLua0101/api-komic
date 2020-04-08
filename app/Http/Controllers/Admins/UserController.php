@@ -55,6 +55,7 @@ class UserController extends Controller
 
     public function postAddUser(Request $request)
     {
+        dd($request);
         // name
         $name = $request->name;
         if (!$name) {

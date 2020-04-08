@@ -77,6 +77,10 @@ class CompanyController extends Controller
             'name' => $title,
             'address' => $address,
             'logo' => $cover,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'company_size' => $request->size,
+            'province_id' => $request->province,
             'created_at' => date('Y-m-d H:i:s'),
         ];
         $result = Company::addNew($data);
@@ -123,6 +127,10 @@ class CompanyController extends Controller
         $data = [
             'name' => $title,
             'address' => $address,
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'company_size' => $request->size,
+            'province_id' => $request->province,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 

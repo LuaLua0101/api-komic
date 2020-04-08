@@ -16,7 +16,6 @@
     <link href="{{ asset('public/admins/assets/global/plugins/select2/css/select2.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/admins/assets/global/plugins/select2/css/select2-bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/admins/assets/global/plugins/bootstrap-datepicker/css/bootstrap-datepicker3.min.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('public/admins/assets/global/plugins/bootstrap-markdown/css/bootstrap-markdown.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/admins/assets/global/css/components-md.min.css') }}" rel="stylesheet" id="style_components" type="text/css" />
     <link href="{{ asset('public/admins/assets/global/css/plugins-md.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('public/admins/assets/layouts/layout4/css/layout.min.css') }}" rel="stylesheet" type="text/css" />

@@ -1,5 +1,3 @@
- <!-- BEGIN CORE PLUGINS -->
- <script src="{{ asset('public/ckeditor/ckeditor.js') }}" type="text/javascript"></script>
  <script src="{{ asset('public/admins/assets/global/plugins/jquery.min.js') }}" type="text/javascript"></script>
  <script src="{{ asset('public/admins/assets/global/plugins/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
  <script src="{{ asset('public/admins/assets/global/plugins/js.cookie.min.js') }}" type="text/javascript"></script>
@@ -11,8 +9,6 @@
  <script src="{{ asset('public/admins/assets/global/plugins/jquery-validation/js/jquery.validate.min.js') }}" type="text/javascript"></script>
  <script src="{{ asset('public/admins/assets/global/plugins/jquery-validation/js/additional-methods.min.js') }}" type="text/javascript"></script>
  <script src="{{ asset('public/admins/assets/global/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}" type="text/javascript"></script>
- <script src="{{ asset('public/admins/assets/global/plugins/bootstrap-markdown/lib/markdown.js') }}" type="text/javascript"></script>
- <script src="{{ asset('public/admins/assets/global/plugins/bootstrap-markdown/js/bootstrap-markdown.js') }}" type="text/javascript"></script>
  <script src="{{ asset('public/admins/assets/global/scripts/app.min.js') }}" type="text/javascript"></script>
  <script src="{{ asset('public/admins/assets/pages/scripts/form-validation.min.js') }}" type="text/javascript">
  </script>
@@ -22,23 +18,14 @@
  </script>
  <script src="{{ asset('public/admins/assets/global/scripts/post.js') }}" type="text/javascript">
  </script>
+
+ <script src="https://cdn.tiny.cloud/1/zz7i1wbqifmls6d623ellu0892zdna6ojjzms7jf9di5ugbl/tinymce/5/tinymce.min.js" referrerpolicy="origin" />
+ </script>
+ <script>
+     tinymce.init({
+         selector: 'textarea'
+     });
+
+ </script>
  @toastr_js
  @toastr_render
- <!-- END THEME LAYOUT SCRIPTS -->
- {{-- <script>
-     $(document).ready(function() {
-         // CKEDITOR.replace('editor1',
-         // {language: 'vi',
-         //     filebrowserUploadUrl: '{!! route('uploadImage', ['_token ' => csrf_token() ]) !!}',
-         //     filebrowserUploadMethod: 'form'});
-         CKEDITOR.replace('editor1', {
-             filebrowserBrowseUrl: '{{ asset('
-             public / ckfinder / ckfinder.html ') }}'
- , filebrowserImageBrowseUrl: '{{ asset('
-             public / ckfinder / ckfinder.html ? type = Images ') }}'
- , filebrowserImageUploadUrl : '{{ asset('
-             public / ckfinder / core / connector / php / connector.php ? command = QuickUpload & type = Images ') }}'
- , });
- })
-
- </script> --}}

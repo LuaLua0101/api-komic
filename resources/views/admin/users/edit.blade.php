@@ -26,6 +26,76 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-md-3">
+                            </label>
+                            <div class="col-md-4">
+                                <div class="md-checkbox">
+                                    <input type="checkbox" id="checkbox6" name="admin" class="md-check">
+                                    <label for="checkbox6">
+                                        <span class="inc"></span>
+                                        <span class="check"></span>
+                                        <span class="box"></span> Quản trị viên </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Giới tính
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <div class="md-radio-inline">
+                                    <div class="md-radio">
+                                        <input type="radio" id="radio14" name="gender" class="md-radiobtn">
+                                        <label for="radio14">
+                                            <span class="inc"></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span> Nữ </label>
+                                    </div>
+                                    <div class="md-radio has-error">
+                                        <input type="radio" id="radio15" name="gender" class="md-radiobtn" checked="">
+                                        <label for="radio15">
+                                            <span class="inc"></span>
+                                            <span class="check"></span>
+                                            <span class="box"></span> Nam </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Địa chỉ
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="address" name="address" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->address :''}}"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Điện thoại
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input type="text" id="phone" name="phone" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->phone :''}}"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Email
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input type="email" id="email" name="email" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->email :''}}"> </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Ngày sinh
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-4 input-group date date-picker" data-date-format="dd-mm-yyyy">
+                                <input type="text" class="form-control" name="dob" readonly aria-required="true" aria-invalid="false" aria-describedby="datepicker-error">
+                                <span class="input-group-btn">
+                                    <button class="btn default" type="button">
+                                        <i class="fa fa-calendar"></i>
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-md-3">Hình avatar
                                 <span class="required" aria-required="true"> * </span>
                             </label>

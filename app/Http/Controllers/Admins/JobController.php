@@ -73,6 +73,11 @@ class JobController extends Controller
         $data = [
             'title' => $title,
             'cover' => $cover,
+            'short_description' => $request->short_description,
+            'description' => $request->description,
+            'salary_from' => $request->salary_from,
+            'salary_to' => $request->salary_to,
+            'company_id' => intval($request->company),
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
@@ -115,6 +120,11 @@ class JobController extends Controller
 
         $data = [
             'title' => $title,
+            'short_description' => $request->short_description,
+            'description' => $request->description,
+            'salary_from' => $request->salary_from,
+            'salary_to' => $request->salary_to,
+            'company_id' => intval($request->company),
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
