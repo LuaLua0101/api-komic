@@ -8,7 +8,7 @@ Route::prefix('/ad')->group(function () {
 
     Route::middleware(['check_admin'])->group(function () {
         // Home
-        Route::get('/', 'Admins\AdminController@getHome')->name('adgetHome');
+        Route::get('/dashboard', 'Admins\AdminController@getHome')->name('adgetHome');
         Route::get('/logout', 'Admins\AdminController@getLogout')->name('adgetLogout');
         // Route::post('/config', 'AdminController@updateConfig')->name('adupdateConfig');
 
