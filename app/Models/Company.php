@@ -77,7 +77,7 @@ class Company extends Model
     {
         $page--;
         try {
-            return Company::where('title', 'like', '%' . $query . '%')->orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
+            return Company::where('name', 'like', '%' . $query . '%')->orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
         } catch (Throwable $e) {
             return null;
         }
@@ -87,7 +87,7 @@ class Company extends Model
     {
         try {
             if ($query) {
-                return ceil(Company::where('title', 'like', '%' . $query . '%')->count() / 10);
+                return ceil(Company::where('name', 'like', '%' . $query . '%')->count() / 10);
             } else {
                 return ceil(Company::count() / 10);
             }

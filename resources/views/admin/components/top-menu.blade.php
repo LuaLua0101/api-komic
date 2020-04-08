@@ -4,12 +4,12 @@
      <div class="page-header-inner ">
          <!-- BEGIN LOGO -->
          <div class="page-logo">
-            <a href="{{ route('adgetHome') }}">
-                <img src="{{ asset('public/admins/logo.png') }}" alt="logo" class="logo-default"> </a>
-            <div class="menu-toggler sidebar-toggler">
-                <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
-            </div>
-        </div>
+             <a href="{{ route('adgetHome') }}">
+                 <img src="{{ asset('public/admins/logo.png') }}" alt="logo" class="logo-default"> </a>
+             <div class="menu-toggler sidebar-toggler">
+                 <!-- DOC: Remove the above "hide" to enable the sidebar toggler button on header -->
+             </div>
+         </div>
          <!-- END LOGO -->
          <!-- BEGIN RESPONSIVE MENU TOGGLER -->
          <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse"> </a>
@@ -59,7 +59,7 @@
              @if(isset($action) && isset($action['search_link']))
              <form class="search-form" action={{$action['search_link']}} method="GET">
                  <div class="input-group">
-                 <input type="text" class="form-control input-sm" placeholder="Tìm kiếm..." name="query" value="{{request()->query('query')}}">
+                     <input type="text" class="form-control input-sm" placeholder="Tìm kiếm..." name="query" value="{{request()->query('query')}}">
                      <span class="input-group-btn">
                          <a href="javascript:;" class="btn submit">
                              <i class="icon-magnifier"></i>
@@ -296,32 +296,11 @@
                          <ul class="dropdown-menu dropdown-menu-default">
                              <li>
                                  <a href="{{ route('adgetPro5User') }}">
-                                     <i class="icon-user"></i> My Profile </a>
+                                     <i class="icon-user"></i> Thông tin cá nhân </a>
                              </li>
-                             {{-- <li>
-                                 <a href="app_calendar.html">
-                                     <i class="icon-calendar"></i> My Calendar </a>
-                             </li>
-                             <li>
-                                 <a href="app_inbox.html">
-                                     <i class="icon-envelope-open"></i> My Inbox
-                                     <span class="badge badge-danger"> 3 </span>
-                                 </a>
-                             </li>
-                             <li>
-                                 <a href="app_todo_2.html">
-                                     <i class="icon-rocket"></i> My Tasks
-                                     <span class="badge badge-success"> 7 </span>
-                                 </a>
-                             </li>
-                             <li class="divider"> </li>
-                             <li>
-                                 <a href="page_user_lock_1.html">
-                                     <i class="icon-lock"></i> Lock Screen </a>
-                             </li> --}}
                              <li>
                                  <a href="{{ route('adgetLogout') }}">
-                                     <i class="icon-key"></i> Log Out </a>
+                                     <i class="icon-key"></i> Đăng xuất </a>
                              </li>
                          </ul>
                      </li>

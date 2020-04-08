@@ -13,11 +13,11 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-cogs"></i>Danh sách khóa học </div>
-                    <div class="tools">
-                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
-                        <a href="javascript:;" class="reload" data-original-title="" title=""> </a>
-                        <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
-                    </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                    <a href="javascript:;" class="reload" data-original-title="" title=""> </a>
+                    <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
+                </div>
             </div>
             <div class="portlet-body flip-scroll">
                 <table class="table table-bordered table-striped table-condensed flip-content">
@@ -45,10 +45,10 @@
                             <td> {{$item->review_count}} </td>
                             <td> {{$item->created_at}} </td>
                             <td>
-                                <a class="btn delete-btn" href="{{route('adgetEditCourse', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
+                                <a class="btn delete-btn" href="{{route('adgetEditCourse', ['id' => $item->id]). '?query='. request()->query('query')}}"><i class="fa fa-pencil-square-o"></i></a>
                             </td>
                             <td>
-                                <a class="btn delete-btn" href="{{route('adgetDelCourse', ['id' => $item->id])}}" onclick="return confirm('Bạn có chắc chắn xóa khóa học này?');">
+                                <a class="btn delete-btn" href="{{route('adgetDelCourse', ['id' => $item->id]) . '?query='. request()->query('query')}}" onclick="return confirm('Bạn có chắc chắn xóa khóa học này?');">
                                     <i class="icon icon-close"></i>
                                 </a>
                             </td>

@@ -13,11 +13,11 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-cogs"></i>Danh sách ebook </div>
-                    <div class="tools">
-                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
-                        <a href="javascript:;" class="reload" data-original-title="" title=""> </a>
-                        <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
-                    </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                    <a href="javascript:;" class="reload" data-original-title="" title=""> </a>
+                    <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
+                </div>
             </div>
             <div class="portlet-body flip-scroll">
                 <table class="table table-bordered table-striped table-condensed flip-content">
@@ -35,7 +35,7 @@
                             <td> Ebook0{{$item->id}}</td>
                             <td> {{$item->title}} </td>
                             <td>
-                                <a class="btn delete-btn" href="{{route('adgetEditEbook', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
+                                <a class="btn delete-btn" href="{{route('adgetEditEbook', ['id' => $item->id]). '?query='. request()->query('query')}}"><i class="fa fa-pencil-square-o"></i></a>
                             </td>
                             <td>
                                 <a class="btn delete-btn" href="{{route('adgetDelEbook', ['id' => $item->id])}}" onclick="return confirm('Bạn có chắc chắn xóa ebook này?');">
@@ -55,7 +55,7 @@
                                     <i class="fa fa-angle-left"></i>
                                 </a>
                                 <input type="text" class="pagination-panel-input form-control input-sm input-inline input-mini" maxlenght="5" style="text-align:center; margin: 0 5px;" value={{$data->page}}>
-                                <a href="{{route('adgetListEbook', ['page' => $data->next])}}" class="btn btn-sm default next @if($data->page == $data->sum) disabled @endif">
+                                <a href="{{route('adgetListEbook', ['page' => $data->next]) . '?query='. request()->query('query')}}" class="btn btn-sm default next @if($data->page == $data->sum) disabled @endif">
                                     <i class="fa fa-angle-right"></i>
                                 </a> / <span class="pagination-panel-total">{{$data->sum}}</span>
                             </div>

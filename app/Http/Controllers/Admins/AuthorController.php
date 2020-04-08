@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
-    public function index($page = 1, $query = null)
+    public function index(Request $request, $page = 1)
     {
         $sum = 0;
         $page = $page < 1 ? 1 : $page;
+        $query = $request->query('query');
         if ($query == null || $query == '') {
             $sum = Author::getSum();
             $page = $page > $sum ? $sum : $page;
@@ -34,12 +35,22 @@ class AuthorController extends Controller
             $data->prev = $page - 1;
         }
 
-        return view('admin.authors.list')->with('data', $data);
+        $action = [
+            'title' => 'Thêm mới giảng viên',
+            'link' => route('adgetAddAuthor'),
+            'search_link' => route('adgetListAuthor'),
+        ];
+        return view('admin.authors.list')->with(['data' => $data, 'action' => $action]);
     }
 
     public function getAddAuthor(Request $request)
     {
-        return view('admin.authors.add');
+        $action = [
+            'title' => 'Danh sách giảng viên',
+            'link' => route('adgetListAuthor'),
+            'search_link' => route('adgetListAuthor'),
+        ];
+        return view('admin.authors.add')->with(['action' => $action]);
     }
 
     public function postAddAuthor(Request $request)

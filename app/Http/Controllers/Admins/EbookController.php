@@ -8,23 +8,24 @@ use Illuminate\Http\Request;
 
 class EbookController extends Controller
 {
-    public function index($page = 1, $query = null)
+    public function index(Request $request, $page = 1)
     {
         $sum = 0;
         $page = $page < 1 ? 1 : $page;
+        $query = $request->query('query');
         if ($query == null || $query == '') {
-            $sum =  TestEbook::getSumEbook();
+            $sum = TestEbook::getSumEbook();
             $page = $page > $sum ? $sum : $page;
             $data = TestEbook::getListEbook($page);
         } else {
-            $sum =  TestEbook::getSumEbook($query);
+            $sum = TestEbook::getSumEbook($query);
             $page = $page > $sum ? $sum : $page;
             $data = TestEbook::getListQueryEbook($query, $page);
             $data->query = $query;
         }
-        
+
         $data->sum = $sum;
-        if($page == $sum) {
+        if ($page == $sum) {
             $data->page = $sum;
             $data->next = $sum;
             $data->prev = $page - 1;
@@ -33,13 +34,23 @@ class EbookController extends Controller
             $data->next = $page + 1;
             $data->prev = $page - 1;
         }
-        
-        return view('admin.ebooks.list')->with('data', $data);
+
+        $action = [
+            'title' => 'Thêm mới ebook',
+            'link' => route('adgetAddEbook'),
+            'search_link' => route('adgetListEbook'),
+        ];
+        return view('admin.ebooks.list')->with(['data' => $data, 'action' => $action]);
     }
 
     public function getAddEbook(Request $request)
     {
-        return view('admin.ebooks.add');
+        $action = [
+            'title' => 'Danh sách ebook',
+            'link' => route('adgetListEbook'),
+            'search_link' => route('adgetListEbook'),
+        ];
+        return view('admin.ebooks.add')->with(['action' => $action]);
     }
 
     public function postAddEbook(Request $request)
@@ -62,6 +73,7 @@ class EbookController extends Controller
         $data = [
             'title' => $title,
             'cover' => $cover,
+            'type' => 1,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 

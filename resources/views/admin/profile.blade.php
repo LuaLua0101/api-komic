@@ -20,24 +20,29 @@
                 <!-- END SIDEBAR USER TITLE -->
                 <!-- SIDEBAR BUTTONS -->
                 <div class="profile-userbuttons">
-                    <button type="button" class="btn btn-circle green btn-sm">Đã xác thực</button>  
-                    {{-- <button type="button" class="btn btn-circle red btn-sm">Chưa xác thực</button> --}}
+                    <button type="button" class="btn btn-circle red btn-sm">Gửi code xác thực</button>
+                </div>
+                <div class="profile-userbuttons">
+                    <form id="avatar-form" name="avatar-form" action="javascript:;" method="post" role="form">
+                        <input type="number" placeholder="Nhập mã code" class="btn btn-circle green btn-sm btn-outline" name="code" />
+                        <button type="button" class="btn btn-circle green btn-sm" onclick="alert('đã xác thực')">Xác thực</button>
+                    </form>
                 </div>
                 <!-- END SIDEBAR BUTTONS -->
                 <!-- SIDEBAR MENU -->
                 <div class="profile-usermenu">
                     <ul class="nav">
-                        <li  class="active">
+                        <li class="active">
                             <a href="#">
-                                <i class="icon-home"></i>  {{ auth()->user()->address}} </a>
+                                <i class="icon-home"></i> {{ auth()->user()->address}} </a>
                         </li>
                         <li class="active">
                             <a href="#">
-                                <i class="icon-settings"></i>  {{ auth()->user()->phone}} </a>
+                                <i class="icon-settings"></i> {{ auth()->user()->phone}} </a>
                         </li>
                         <li class="active">
                             <a href="#">
-                                <i class="icon-info"></i>  {{ auth()->user()->email}} </a>
+                                <i class="icon-info"></i> {{ auth()->user()->email}} </a>
                         </li>
                     </ul>
                 </div>
@@ -107,8 +112,8 @@
                         <div class="portlet-body">
                             <div class="tab-content">
                                 <!-- PERSONAL INFO TAB -->
-                                <div class="tab-pane active" id="tab_1_1">
-                                    <form role="form" action="#">
+                                <div class="tab-pane active" id="tab_1_1" style="width:70%;margin-left:auto;margin-right:auto">
+                                    <form role="form" id="info-form" name="info-form" action="javascript:;" method="post">
                                         <div class="form-group">
                                             <label class="control-label">Họ tên</label>
                                             <input type="text" placeholder="John" class="form-control" value="{{ auth()->user()->name}}" /> </div>
@@ -123,33 +128,38 @@
                                             <input type="text" placeholder="Design, Web etc." class="form-control" /> </div>
                                         <div class="form-group">
                                             <label class="control-label">Ngày sinh</label>
-                                            <input type="text" placeholder="Web Developer" class="form-control" /> </div>
+                                            <div class="input-group date date-picker" data-date-format="dd-mm-yyyy">
+                                                <input type="text" class="form-control" readonly="" name="datepicker" aria-required="true" aria-invalid="false" aria-describedby="datepicker-error">
+                                                <span class="input-group-btn">
+                                                    <button class="btn default" type="button">
+                                                        <i class="fa fa-calendar"></i>
+                                                    </button>
+                                                </span>
+                                            </div>
+                                        </div>
                                         <div class="form-group">
                                             <label class="control-label">Địa chỉ</label>
                                             <textarea class="form-control" rows="3" placeholder="We are KeenThemes!!!">{{ auth()->user()->address}}</textarea>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="control-label">Website Url</label>
-                                            <input type="text" placeholder="http://www.mywebsite.com" class="form-control" /> </div>
                                         <div class="margiv-top-10">
-                                            <a href="javascript:;" class="btn green"> Lưu lại </a>
+                                            <a href="javascript:;" class="btn green" onclick="alert('change info')"> Lưu lại </a>
                                         </div>
                                     </form>
                                 </div>
                                 <!-- END PERSONAL INFO TAB -->
                                 <!-- CHANGE AVATAR TAB -->
                                 <div class="tab-pane" id="tab_1_2">
-                                    <form action="#" role="form">
+                                    <form id="avatar-form" name="avatar-form" action="javascript:;" method="post" role="form">
                                         <div class="form-group">
                                             <div class="fileinput fileinput-new" data-provides="fileinput">
                                                 <div class="fileinput-new thumbnail" style="width: 200px; height: 150px;">
-                                                    <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image" alt="" /> </div>
+                                                    <img style="height: 150px;" src="{{asset('public/admins/img/users/' .auth()->user()->avatar)}}" onerror="this.src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&amp;text=no+image';" alt="" /> </div>
                                                 <div class="fileinput-preview fileinput-exists thumbnail" style="max-width: 200px; max-height: 150px;"> </div>
                                                 <div>
                                                     <span class="btn default btn-file">
                                                         <span class="fileinput-new"> Select image </span>
                                                         <span class="fileinput-exists"> Change </span>
-                                                        <input type="file" name="..."> </span>
+                                                        <input type="file" name="cover" /> </span>
                                                     <a href="javascript:;" class="btn default fileinput-exists" data-dismiss="fileinput"> Remove </a>
                                                 </div>
                                             </div>
@@ -159,14 +169,14 @@
                                             </div>
                                         </div>
                                         <div class="margin-top-10">
-                                            <a href="javascript:;" class="btn green"> Submit </a>
+                                            <a href="javascript:;" class="btn green" onclick="alert('upload avt')"> Submit </a>
                                         </div>
                                     </form>
                                 </div>
                                 <!-- END CHANGE AVATAR TAB -->
                                 <!-- CHANGE PASSWORD TAB -->
-                                <div class="tab-pane" id="tab_1_3">
-                                    <form action="#">
+                                <div class="tab-pane" id="tab_1_3" style="width:70%;margin-left:auto;margin-right:auto">
+                                    <form id="passwd-form" name="passwd-form" action="javascript:;" method="post">
                                         <div class="form-group">
                                             <label class="control-label">Nhập password mới</label>
                                             <input type="password" class="form-control" /> </div>
@@ -174,7 +184,7 @@
                                             <label class="control-label">Nhập lại password mới</label>
                                             <input type="password" class="form-control" /> </div>
                                         <div class="margin-top-10">
-                                            <a href="javascript:;" class="btn green"> Đổi Password </a>
+                                            <a href="javascript:;" class="btn green" onclick="alert('change passwd')"> Đổi Password </a>
                                         </div>
                                     </form>
                                 </div>

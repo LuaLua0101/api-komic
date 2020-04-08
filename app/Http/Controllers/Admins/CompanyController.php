@@ -9,10 +9,11 @@ use Illuminate\Http\Request;
 
 class CompanyController extends Controller
 {
-    public function index($page = 1, $query = null)
+    public function index(Request $request, $page = 1)
     {
         $sum = 0;
         $page = $page < 1 ? 1 : $page;
+        $query = $request->query('query');
         if ($query == null || $query == '') {
             $sum = Company::getSum();
             $page = $page > $sum ? $sum : $page;
@@ -36,16 +37,19 @@ class CompanyController extends Controller
         }
 
         $action = [
-            'title' =>'Thêm mới công ty',
-        'link'=> route('adgetAddCompany')
-    ];
-        return view('admin.companies.list')->with(['data'=> $data, 'action' => $action]);
+            'title' => 'Thêm mới công ty',
+            'link' => route('adgetAddCompany'),
+            'search_link' => route('adgetListCompany'),
+        ];
+        return view('admin.companies.list')->with(['data' => $data, 'action' => $action]);
     }
 
     public function getAddCompany(Request $request)
     {
-        $action = ['title' =>'Danh sách công ty',
-        'link'=> route('adgetListCompany')];
+        $action = [
+            'title' => 'Danh sách công ty',
+            'link' => route('adgetListCompany'),
+            'search_link' => route('adgetListCompany')];
         return view('admin.companies.add')->with(['action' => $action]);
     }
 

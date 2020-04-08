@@ -11,17 +11,16 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.login');
+        return redirect()->route('adgetLogin');
     }
 
     public function getLogin()
     {
-
         if (auth()->check()) {
             if (Auth::user()->admin == 1) {
                 return redirect()->route('adgetHome');
             } else {
-                return redirect()->route('getHome');
+                return view('admin.login');
             }
         } else {
             return view('admin.login');
@@ -40,12 +39,15 @@ class AdminController extends Controller
         if (Auth::attempt(['email' => $request->input('email'), 'password' => $request->input('password')])) {
             // Authentication passed...
             if (Auth::user()->admin == 1) {
-                return redirect()->route('adgetHome');
+                toastr()->success('Đăng nhập thành công');
+                return 200;
             } else {
-                return redirect()->route('getHome');
+                toastr()->error('Tài khoản không có quyền truy cập');
+                return 401;
             }
         } else {
-            return redirect()->route('adgetLogin')->with('error', 'Mật khẩu hoặc tài khoản không đúng');
+            toastr()->error('Mật khẩu hoặc tài khoản không đúng');
+            return 401;
         }
     }
 

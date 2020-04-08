@@ -30,10 +30,10 @@
                             <td> Author0{{$item->id}}</td>
                             <td> {{$item->name}} </td>
                             <td>
-                                <a class="btn delete-btn" href="{{route('adgetEditAuthor', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
+                                <a class="btn delete-btn" href="{{route('adgetEditAuthor', ['id' => $item->id]). '?query='. request()->query('query')}}"><i class="fa fa-pencil-square-o"></i></a>
                             </td>
                             <td>
-                                <a class="btn delete-btn" href="{{route('adgetDelAuthor', ['id' => $item->id])}}" onclick="return confirm('Bạn có chắc chắn xóa giảng viên này?');">
+                                <a class="btn delete-btn" href="{{route('adgetDelAuthor', ['id' => $item->id]) . '?query='. request()->query('query')}}" onclick="return confirm('Bạn có chắc chắn xóa giảng viên này?');">
                                     <i class="icon icon-close"></i>
                                 </a>
                             </td>

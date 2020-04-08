@@ -5,12 +5,12 @@ Route::prefix('/ad')->group(function () {
 
     Route::get('/login', 'Admins\AdminController@getLogin')->name('adgetLogin');
     Route::post('/login', 'Admins\AdminController@postLogin')->name('adpostLogin');
+    Route::post('/forgot-passwd', 'Admins\AdminController@postLogin')->name('adpostForgotPass');
 
     Route::middleware(['check_admin'])->group(function () {
         // Home
         Route::get('/dashboard', 'Admins\AdminController@getHome')->name('adgetHome');
         Route::get('/logout', 'Admins\AdminController@getLogout')->name('adgetLogout');
-        // Route::post('/config', 'AdminController@updateConfig')->name('adupdateConfig');
 
         // Jobs
         Route::prefix('/job')->group(function () {
@@ -27,7 +27,7 @@ Route::prefix('/ad')->group(function () {
 
         // Companies
         Route::prefix('/company')->group(function () {
-            Route::get('/list/{page?}/{query?}', 'Admins\CompanyController@index')->name('adgetListCompany');
+            Route::get('/list/{page?}', 'Admins\CompanyController@index')->name('adgetListCompany');
 
             Route::get('/add', 'Admins\CompanyController@getAddCompany')->name('adgetAddCompany');
             Route::post('/add', 'Admins\CompanyController@postAddCompany')->name('adpostAddCompany');
@@ -40,7 +40,7 @@ Route::prefix('/ad')->group(function () {
 
         // Users
         Route::prefix('/user')->group(function () {
-            Route::get('/list/{page?}/{query?}', 'Admins\UserController@index')->name('adgetListUser');
+            Route::get('/list/{page?}', 'Admins\UserController@index')->name('adgetListUser');
 
             Route::get('/add', 'Admins\UserController@getAddUser')->name('adgetAddUser');
             Route::post('/add', 'Admins\UserController@postAddUser')->name('adpostAddUser');
@@ -55,7 +55,7 @@ Route::prefix('/ad')->group(function () {
 
         // Course
         Route::prefix('/course')->group(function () {
-            Route::get('/list/{page?}/{query?}', 'Admins\CourseController@index')->name('adgetListCourse');
+            Route::get('/list/{page?}', 'Admins\CourseController@index')->name('adgetListCourse');
 
             Route::get('/add', 'Admins\CourseController@getAddCourse')->name('adgetAddCourse');
             Route::post('/add', 'Admins\CourseController@postAddCourse')->name('adpostAddCourse');
@@ -81,7 +81,7 @@ Route::prefix('/ad')->group(function () {
 
         // Ebook
         Route::prefix('/ebook')->group(function () {
-            Route::get('/list/{page?}/{query?}', 'Admins\EbookController@index')->name('adgetListEbook');
+            Route::get('/list/{page?}', 'Admins\EbookController@index')->name('adgetListEbook');
 
             Route::get('/add', 'Admins\EbookController@getAddEbook')->name('adgetAddEbook');
             Route::post('/add', 'Admins\EbookController@postAddEbook')->name('adpostAddEbook');
@@ -110,7 +110,7 @@ Route::prefix('/ad')->group(function () {
 
         // Authors
         Route::prefix('/author')->group(function () {
-            Route::get('/list/{page?}/{query?}', 'Admins\AuthorController@index')->name('adgetListAuthor');
+            Route::get('/list/{page?}', 'Admins\AuthorController@index')->name('adgetListAuthor');
 
             Route::get('/add', 'Admins\AuthorController@getAddAuthor')->name('adgetAddAuthor');
             Route::post('/add', 'Admins\AuthorController@postAddAuthor')->name('adpostAddAuthor');

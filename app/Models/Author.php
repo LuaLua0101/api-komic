@@ -41,7 +41,7 @@ class Author extends Model
     {
         $page--;
         try {
-            return Author::where('title', 'like', '%' . $query . '%')->orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
+            return Author::where('name', 'like', '%' . $query . '%')->orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
         } catch (Throwable $e) {
             return null;
         }
@@ -51,7 +51,7 @@ class Author extends Model
     {
         try {
             if ($query) {
-                return ceil(Author::where('title', 'like', '%' . $query . '%')->count() / 10);
+                return ceil(Author::where('name', 'like', '%' . $query . '%')->count() / 10);
             } else {
                 return ceil(Author::count() / 10);
             }

@@ -8,10 +8,11 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function index($page = 1, $query = null)
+    public function index(Request $request, $page = 1)
     {
         $sum = 0;
         $page = $page < 1 ? 1 : $page;
+        $query = $request->query('query');
         if ($query == null || $query == '') {
             $sum = Account::getSum();
             $page = $page > $sum ? $sum : $page;
@@ -34,12 +35,22 @@ class UserController extends Controller
             $data->prev = $page - 1;
         }
 
-        return view('admin.users.list')->with('data', $data);
+        $action = [
+            'title' => 'Thêm mới người dùng',
+            'link' => route('adgetAddUser'),
+            'search_link' => route('adgetListUser'),
+        ];
+        return view('admin.users.list')->with(['data' => $data, 'action' => $action]);
     }
 
     public function getAddUser(Request $request)
     {
-        return view('admin.users.add');
+        $action = [
+            'title' => 'Danh sách người dùng',
+            'link' => route('adgetListUser'),
+            'search_link' => route('adgetListUser'),
+        ];
+        return view('admin.users.add')->with(['action' => $action]);
     }
 
     public function postAddUser(Request $request)
@@ -134,7 +145,8 @@ class UserController extends Controller
         }
     }
 
-    public function getPro5User() {
+    public function getPro5User()
+    {
         return view('admin.profile');
     }
 }

@@ -79,7 +79,7 @@ class Account extends Model
     {
         $page--;
         try {
-            return Account::where('title', 'like', '%' . $query . '%')->orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
+            return Account::where('name', 'like', '%' . $query . '%')->orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
         } catch (Throwable $e) {
             return null;
         }
@@ -89,7 +89,7 @@ class Account extends Model
     {
         try {
             if ($query) {
-                return ceil(Account::where('title', 'like', '%' . $query . '%')->count() / 10);
+                return ceil(Account::where('name', 'like', '%' . $query . '%')->count() / 10);
             } else {
                 return ceil(Account::count() / 10);
             }

@@ -8,23 +8,24 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    public function index($page = 1, $query = null)
+    public function index(Request $request, $page = 1)
     {
         $sum = 0;
         $page = $page < 1 ? 1 : $page;
+        $query = $request->query('query');
         if ($query == null || $query == '') {
-            $sum =  Course::getSum();
+            $sum = Course::getSum();
             $page = $page > $sum ? $sum : $page;
             $data = Course::getList($page);
         } else {
-            $sum =  Course::getSum($query);
+            $sum = Course::getSum($query);
             $page = $page > $sum ? $sum : $page;
             $data = Course::getListQuery($query, $page);
             $data->query = $query;
         }
-        
+
         $data->sum = $sum;
-        if($page == $sum) {
+        if ($page == $sum) {
             $data->page = $sum;
             $data->next = $sum;
             $data->prev = $page - 1;
@@ -33,13 +34,23 @@ class CourseController extends Controller
             $data->next = $page + 1;
             $data->prev = $page - 1;
         }
-        
-        return view('admin.courses.list')->with('data', $data);
+
+        $action = [
+            'title' => 'Thêm mới khóa học',
+            'link' => route('adgetAddCourse'),
+            'search_link' => route('adgetListCourse'),
+        ];
+        return view('admin.courses.list')->with(['data' => $data, 'action' => $action]);
     }
 
     public function getAddCourse(Request $request)
     {
-        return view('admin.courses.add');
+        $action = [
+            'title' => 'Danh sách khóa học',
+            'link' => route('adgetListCourse'),
+            'search_link' => route('adgetListCourse'),
+        ];
+        return view('admin.courses.add')->with(['action' => $action]);
     }
 
     public function postAddCourse(Request $request)

@@ -14,18 +14,18 @@ class TestController extends Controller
         $page = $page < 1 ? 1 : $page;
         $query = $request->query('query');
         if ($query == null || $query == '') {
-            $sum =  TestEbook::getSumTest();
+            $sum = TestEbook::getSumTest();
             $page = $page > $sum ? $sum : $page;
             $data = TestEbook::getListTest($page);
         } else {
-            $sum =  TestEbook::getSumTest($query);
+            $sum = TestEbook::getSumTest($query);
             $page = $page > $sum ? $sum : $page;
             $data = TestEbook::getListQueryTest($query, $page);
             $data->query = $query;
         }
-        
+
         $data->sum = $sum;
-        if($page == $sum) {
+        if ($page == $sum) {
             $data->page = $sum;
             $data->next = $sum;
             $data->prev = $page - 1;
@@ -34,13 +34,23 @@ class TestController extends Controller
             $data->next = $page + 1;
             $data->prev = $page - 1;
         }
-        
-        return view('admin.tests.list')->with('data', $data);
+
+        $action = [
+            'title' => 'Thêm mới bài test',
+            'link' => route('adgetAddTest'),
+            'search_link' => route('adgetListTest'),
+        ];
+        return view('admin.tests.list')->with(['data' => $data, 'action' => $action]);
     }
 
     public function getAddTest(Request $request)
     {
-        return view('admin.tests.add');
+        $action = [
+            'title' => 'Danh sách bài test',
+            'link' => route('adgetListTest'),
+            'search_link' => route('adgetListTest'),
+        ];
+        return view('admin.tests.add')->with(['action' => $action]);
     }
 
     public function postAddTest(Request $request)

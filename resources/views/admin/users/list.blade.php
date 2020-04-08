@@ -13,11 +13,11 @@
             <div class="portlet-title">
                 <div class="caption">
                     <i class="fa fa-cogs"></i>Danh sách người dùng </div>
-                    <div class="tools">
-                        <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
-                        <a href="javascript:;" class="reload" data-original-title="" title=""> </a>
-                        <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
-                    </div>
+                <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title=""> </a>
+                    <a href="javascript:;" class="reload" data-original-title="" title=""> </a>
+                    <a href="javascript:;" class="remove" data-original-title="" title=""> </a>
+                </div>
             </div>
             <div class="portlet-body flip-scroll">
                 <table class="table table-bordered table-striped table-condensed flip-content">
@@ -45,11 +45,11 @@
                             <td> {{$item->email}} </td>
                             <td> @if($item->admin == 1) <i class="fa fa-shield"></i> @endif </td>
                             <td>
-                                <a class="btn delete-btn" href="{{route('adgetEditUser', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
+                                <a class="btn delete-btn" href="{{route('adgetEditUser', ['id' => $item->id]). '?query='. request()->query('query')}}"><i class="fa fa-pencil-square-o"></i></a>
                             </td>
                             <td>
                                 @if($item->admin !== 1)
-                                <a class="btn delete-btn" href="{{route('adgetDelUser', ['id' => $item->id])}}" onclick="return confirm('Bạn có chắc chắn xóa người dùng này?');">
+                                <a class="btn delete-btn" href="{{route('adgetDelUser', ['id' => $item->id]) . '?query='. request()->query('query')}}" onclick="return confirm('Bạn có chắc chắn xóa người dùng này?');">
                                     <i class="icon icon-close"></i>
                                 </a>@endif
                             </td>

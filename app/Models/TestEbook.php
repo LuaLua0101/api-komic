@@ -98,7 +98,7 @@ class TestEbook extends Model
     {
         $page--;
         try {
-            return TestEbook::orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
+            return TestEbook::orderBy('created_at', 'desc')->where('type', 0)->skip($page * 10)->take(10)->get();
         } catch (Throwable $e) {
             return null;
         }
@@ -108,7 +108,7 @@ class TestEbook extends Model
     {
         $page--;
         try {
-            return TestEbook::orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
+            return TestEbook::orderBy('created_at', 'desc')->where('type', '<>', 0)->skip($page * 10)->take(10)->get();
         } catch (Throwable $e) {
             return null;
         }
@@ -118,7 +118,7 @@ class TestEbook extends Model
     {
         $page--;
         try {
-            return TestEbook::where('title', 'like', '%' . $query . '%')->orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
+            return TestEbook::where('title', 'like', '%' . $query . '%')->where('type', 0)->orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
         } catch (Throwable $e) {
             return null;
         }
@@ -128,7 +128,7 @@ class TestEbook extends Model
     {
         $page--;
         try {
-            return TestEbook::where('title', 'like', '%' . $query . '%')->orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
+            return TestEbook::where('title', 'like', '%' . $query . '%')->where('type', '<>', 0)->orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
         } catch (Throwable $e) {
             return null;
         }
@@ -138,9 +138,9 @@ class TestEbook extends Model
     {
         try {
             if ($query) {
-                return ceil(TestEbook::where('title', 'like', '%' . $query . '%')->count() / 10);
+                return ceil(TestEbook::where('title', 'like', '%' . $query . '%')->where('type', 0)->count() / 10);
             } else {
-                return ceil(TestEbook::count() / 10);
+                return ceil(TestEbook::where('type', 0)->count() / 10);
             }
 
         } catch (Throwable $e) {
@@ -152,9 +152,9 @@ class TestEbook extends Model
     {
         try {
             if ($query) {
-                return ceil(TestEbook::where('title', 'like', '%' . $query . '%')->count() / 10);
+                return ceil(TestEbook::where('title', 'like', '%' . $query . '%')->where('type', '<>', 0)->count() / 10);
             } else {
-                return ceil(TestEbook::count() / 10);
+                return ceil(TestEbook::where('type', '<>', 0)->count() / 10);
             }
 
         } catch (Throwable $e) {

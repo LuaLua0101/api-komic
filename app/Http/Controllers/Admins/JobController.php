@@ -14,18 +14,18 @@ class JobController extends Controller
         $page = $page < 1 ? 1 : $page;
         $query = $request->query('query');
         if ($query == null || $query == '') {
-            $sum =  Job::getSum();
+            $sum = Job::getSum();
             $page = $page > $sum ? $sum : $page;
             $data = Job::getList($page);
         } else {
-            $sum =  Job::getSum($query);
+            $sum = Job::getSum($query);
             $page = $page > $sum ? $sum : $page;
             $data = Job::getListQuery($query, $page);
             $data->query = $query;
         }
-        
+
         $data->sum = $sum;
-        if($page == $sum) {
+        if ($page == $sum) {
             $data->page = $sum;
             $data->next = $sum;
             $data->prev = $page - 1;
@@ -34,18 +34,23 @@ class JobController extends Controller
             $data->next = $page + 1;
             $data->prev = $page - 1;
         }
-        
+
         $action = [
-            'title' =>'Thêm mới công việc',
-            'link'=> route('adgetAddJob'),
-            'search_link' => route('adgetListJob')
+            'title' => 'Thêm mới công việc',
+            'link' => route('adgetAddJob'),
+            'search_link' => route('adgetListJob'),
         ];
-        return view('admin.jobs.list')->with(['data'=> $data, 'action' => $action]);
+        return view('admin.jobs.list')->with(['data' => $data, 'action' => $action]);
     }
 
     public function getAddJob(Request $request)
     {
-        return view('admin.jobs.add');
+        $action = [
+            'title' => 'Danh sách công việc',
+            'link' => route('adgetListJob'),
+            'search_link' => route('adgetListJob'),
+        ];
+        return view('admin.jobs.add')->with(['action' => $action]);
     }
 
     public function postAddJob(Request $request)
