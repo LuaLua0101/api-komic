@@ -50,7 +50,7 @@ class EbookController extends Controller
             'link' => route('adgetListEbook'),
             'search_link' => route('adgetListEbook'),
         ];
-        return view('admin.ebooks.add')->with(['action' => $action]);
+        return view('admin.ebooks.edit')->with(['action' => $action]);
     }
 
     public function postAddEbook(Request $request)

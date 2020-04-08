@@ -5,14 +5,23 @@ namespace App\Http\Controllers\Admins;
 use App\Http\Controllers\Controller;
 use App\Models\District;
 use App\Models\Province;
+use Illuminate\Http\Request;
 
 class ProvinceController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data = Province::getList();
+        $query = $request->query('query');
+        if ($query == null || $query == '') {
+            $data = Province::getList();
+        } else {
+            $data = Province::getListQuery($query);
+        }
 
-        return view('admin.provinces.list')->with('data', $data);
+        $action = [
+            'search_link' => route('adgetListProvince'),
+        ];
+        return view('admin.provinces.list')->with(['data' => $data, 'action' => $action]);
     }
 
     public function getDetailProvince($id)

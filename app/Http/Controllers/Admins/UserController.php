@@ -50,7 +50,7 @@ class UserController extends Controller
             'link' => route('adgetListUser'),
             'search_link' => route('adgetListUser'),
         ];
-        return view('admin.users.add')->with(['action' => $action]);
+        return view('admin.users.edit')->with(['action' => $action]);
     }
 
     public function postAddUser(Request $request)

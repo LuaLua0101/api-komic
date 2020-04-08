@@ -50,7 +50,7 @@ class AuthorController extends Controller
             'link' => route('adgetListAuthor'),
             'search_link' => route('adgetListAuthor'),
         ];
-        return view('admin.authors.add')->with(['action' => $action]);
+        return view('admin.authors.edit')->with(['action' => $action]);
     }
 
     public function postAddAuthor(Request $request)

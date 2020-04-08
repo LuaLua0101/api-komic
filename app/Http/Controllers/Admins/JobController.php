@@ -50,7 +50,7 @@ class JobController extends Controller
             'link' => route('adgetListJob'),
             'search_link' => route('adgetListJob'),
         ];
-        return view('admin.jobs.add')->with(['action' => $action]);
+        return view('admin.jobs.edit')->with(['action' => $action]);
     }
 
     public function postAddJob(Request $request)

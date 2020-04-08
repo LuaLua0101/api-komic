@@ -35,10 +35,10 @@
                             <td> Ebook0{{$item->id}}</td>
                             <td> {{$item->title}} </td>
                             <td>
-                                <a class="btn delete-btn" href="{{route('adgetEditEbook', ['id' => $item->id]). '?query='. request()->query('query')}}"><i class="fa fa-pencil-square-o"></i></a>
+                                <a class="btn delete-btn dt-button buttons-pdf buttons-html5  purple btn-outline" href="{{route('adgetEditEbook', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>
                             </td>
                             <td>
-                                <a class="btn delete-btn" href="{{route('adgetDelEbook', ['id' => $item->id])}}" onclick="return confirm('Bạn có chắc chắn xóa ebook này?');">
+                                <a class="btn delete-btn dt-button buttons-pdf buttons-html5 red btn-outline" href="{{route('adgetDelEbook', ['id' => $item->id])}}" onclick="return confirm('Bạn có chắc chắn xóa ebook này?');">
                                     <i class="icon icon-close"></i>
                                 </a>
                             </td>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="col-md-7 col-sm-7">
                         <div class="dataTables_paginate paging_bootstrap_extended" id="sample_2_paginate">
-                            <div class="pagination-panel"> Trang <a href="{{route('adgetListEbook', ['page' => $data->prev])}}" class="btn btn-sm default prev @if($data->page == 1) disabled @endif">
+                            <div class="pagination-panel"> Trang <a href="{{route('adgetListEbook', ['page' => $data->prev]). '?query='. request()->query('query')}}" class="btn btn-sm default prev @if($data->page == 1) disabled @endif">
                                     <i class="fa fa-angle-left"></i>
                                 </a>
                                 <input type="text" class="pagination-panel-input form-control input-sm input-inline input-mini" maxlenght="5" style="text-align:center; margin: 0 5px;" value={{$data->page}}>

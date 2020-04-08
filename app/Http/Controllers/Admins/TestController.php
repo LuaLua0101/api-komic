@@ -50,7 +50,7 @@ class TestController extends Controller
             'link' => route('adgetListTest'),
             'search_link' => route('adgetListTest'),
         ];
-        return view('admin.tests.add')->with(['action' => $action]);
+        return view('admin.tests.edit')->with(['action' => $action]);
     }
 
     public function postAddTest(Request $request)

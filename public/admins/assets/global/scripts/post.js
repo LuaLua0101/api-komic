@@ -18,6 +18,26 @@ $(document).on("focusout", "#form-title", function () {
     }
 });
 
+$(document).on("change", "#form-cover", function (evt) {
+    var file = evt.target.files[0];
+
+    //Get tmp path
+    var tmp = URL.createObjectURL(event.target.files[0]);
+    //Get name extension
+    var nameExtension = file.type;
+    //Check image file
+    if (nameExtension.search("image") > -1 && file.size < 5 * 1024 * 1024) {
+        $(this).next("label").text(file.name);
+        $("#file-show").attr("src", tmp);
+        $("#file-show").removeClass("hidden");
+    } else {
+        notify("Vui lòng chọn hình có dung lượng nhỏ hơn 5MB", 0);
+        $(this).next("label").text("Choose file");
+        $("#file-show").addClass("hidden");
+        $(this).val("");
+    }
+});
+
 $(document).on("change", "#form-avatar", function (evt) {
     var file = evt.target.files[0];
 
@@ -25,7 +45,6 @@ $(document).on("change", "#form-avatar", function (evt) {
     var tmp = URL.createObjectURL(event.target.files[0]);
     //Get name extension
     var nameExtension = file.type;
-
     //Check image file
     if (nameExtension.search("image") > -1 && file.size < 5 * 1024 * 1024) {
         $(this).next("label").text(file.name);

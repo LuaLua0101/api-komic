@@ -17,6 +17,15 @@ class Province extends Model
         }
     }
 
+    public static function getListQuery($query)
+    {
+        try {
+            return Province::where('name', 'like', '%' . $query . '%')->get();
+        } catch (Throwable $e) {
+            return null;
+        }
+    }
+
     public static function getById($id)
     {
         try {

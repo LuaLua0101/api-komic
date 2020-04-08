@@ -50,7 +50,7 @@ class CompanyController extends Controller
             'title' => 'Danh sách công ty',
             'link' => route('adgetListCompany'),
             'search_link' => route('adgetListCompany')];
-        return view('admin.companies.add')->with(['action' => $action]);
+        return view('admin.companies.edit')->with(['action' => $action]);
     }
 
     public function postAddCompany(Request $request)
@@ -156,7 +156,6 @@ class CompanyController extends Controller
     public function getCompanySize()
     {
         $data = CompanySize::get();
-
         return view('admin.company_sizes.list')->with('data', $data);
     }
 }

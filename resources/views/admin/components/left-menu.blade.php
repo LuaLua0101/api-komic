@@ -9,11 +9,11 @@
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class=" icon-direction"></i>
                     <span class="title">Quản lý tuyển dụng</span>
-                    <span class="arrow"></span>
+                    <span class="arrow @yield('job_active')"></span>
                 </a>
-                <ul class="sub-menu">
-                    <li class="nav-item  ">
-                        <a href="{{ route('adgetAddJob') }}" class="nav-link ">
+                <ul class="sub-menu" @if(View::hasSection('job_active')) style=" display: block" @else style="display: none" @endif">
+                    <li class="nav-item">
+                        <a href=" {{ route('adgetAddJob') }}" class="nav-link ">
                             <span class="title">Thêm việc làm mới</span>
                         </a>
                     </li>
@@ -28,9 +28,9 @@
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-briefcase"></i>
                     <span class="title">Quản lý công ty</span>
-                    <span class="arrow"></span>
+                    <span class="arrow @yield('company_active')"></span>
                 </a>
-                <ul class="sub-menu">
+                <ul class="sub-menu" @if(View::hasSection('company_active')) style=" display: block" @else style="display: none" @endif">
                     <li class="nav-item  ">
                         <a href="{{ route('adgetAddCompany') }}" class="nav-link ">
                             <span class="title">Thêm công ty mới</span>
@@ -52,9 +52,9 @@
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-user"></i>
                     <span class="title">Quản lý người dùng</span>
-                    <span class="arrow"></span>
+                    <span class="arrow @yield('user_active')"></span>
                 </a>
-                <ul class="sub-menu">
+                <ul class="sub-menu" @if(View::hasSection('user_active')) style=" display: block" @else style="display: none" @endif">
                     <li class="nav-item  ">
                         <a href="{{ route('adgetAddUser') }}" class="nav-link ">
                             <span class="title">Thêm người dùng mới</span>
@@ -71,9 +71,9 @@
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-book-open"></i>
                     <span class="title">Quản lý khóa học</span>
-                    <span class="arrow"></span>
+                    <span class="arrow @yield('course_active')"></span>
                 </a>
-                <ul class="sub-menu">
+                <ul class="sub-menu" @if(View::hasSection('course_active')) style=" display: block" @else style="display: none" @endif">
                     <li class="nav-item  ">
                         <a href="{{ route('adgetAddCourse') }}" class="nav-link ">
                             <span class="title">Thêm khóa học mới</span>
@@ -90,9 +90,9 @@
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-docs"></i>
                     <span class="title">Quản lý bài test/ebook</span>
-                    <span class="arrow"></span>
+                    <span class="arrow @yield('testebook_active')"></span>
                 </a>
-                <ul class="sub-menu">
+                <ul class="sub-menu" @if(View::hasSection('testebook_active')) style=" display: block" @else style="display: none" @endif">
                     <li class="nav-item  ">
                         <a href="{{ route('adgetAddTest') }}" class="nav-link ">
                             <span class="title">Thêm bài test mới</span>
@@ -119,9 +119,9 @@
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-map"></i>
                     <span class="title">Quản lý tỉnh thành</span>
-                    <span class="arrow"></span>
+                    <span class="arrow @yield('province_active')"></span>
                 </a>
-                <ul class="sub-menu">
+                <ul class="sub-menu" @if(View::hasSection('province_active')) style=" display: block" @else style="display: none" @endif">
                     <li class="nav-item  ">
                         <a href="{{ route('adgetListProvince') }}" class="nav-link ">
                             <span class="title">Danh sách tỉnh thành</span>
@@ -133,9 +133,9 @@
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-graduation"></i>
                     <span class="title">Quản lý bằng cấp/chứng chỉ</span>
-                    <span class="arrow"></span>
+                    <span class="arrow @yield('degree_active')"></span>
                 </a>
-                <ul class="sub-menu">
+                <ul class="sub-menu" @if(View::hasSection('degree_active')) style=" display: block" @else style="display: none" @endif">
                     <li class="nav-item  ">
                         <a href="{{ route('adgetListDegree') }}" class="nav-link ">
                             <span class="title">Danh sách bằng cấp</span>
@@ -147,9 +147,9 @@
                 <a href="javascript:;" class="nav-link nav-toggle">
                     <i class="icon-user-female"></i>
                     <span class="title">Quản lý giảng viên</span>
-                    <span class="arrow"></span>
+                    <span class="arrow @yield('author_active')"></span>
                 </a>
-                <ul class="sub-menu">
+                <ul class="sub-menu" @if(View::hasSection('author_active')) style=" display: block" @else style="display: none" @endif">
                     <li class="nav-item  ">
                         <a href="{{ route('adgetAddAuthor') }}" class="nav-link ">
                             <span class="title">Thêm giảng viên mới</span>

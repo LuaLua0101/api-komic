@@ -50,7 +50,7 @@ class CourseController extends Controller
             'link' => route('adgetListCourse'),
             'search_link' => route('adgetListCourse'),
         ];
-        return view('admin.courses.add')->with(['action' => $action]);
+        return view('admin.courses.edit')->with(['action' => $action]);
     }
 
     public function postAddCourse(Request $request)
