@@ -32,7 +32,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('getEbook4U', 'Api\TestEbookController@getEbook4U');
     Route::get('getNewestTest', 'Api\TestEbookController@getNewestTest');
     Route::get('getWhoAreYouTest', 'Api\TestEbookController@getWhoAreYouTest');
-    
+
     //user
     Route::get('getPersonalInfo', 'Api\UserController@getPersonalInfo');
     Route::get('getMyCV', 'Api\UserController@getMyCV');
@@ -40,7 +40,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
 
     Route::get('getActiveUser', 'Api\UserController@getActiveUser');
     Route::post('postActiveUser', 'Api\UserController@postActiveUser');
-            
+
     Route::post('comics', 'Api\ApiController@testApi')->middleware(['can:get-transactions']);
 });
 

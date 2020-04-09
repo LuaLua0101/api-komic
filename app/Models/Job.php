@@ -61,9 +61,10 @@ class Job extends Model
     public static function viecChoBan()
     {
         try {
-            DB::beginTransaction();
-            $t = Job::take(4)->get();
-            DB::commit();
+            $t = DB::table('job_user_pinneds')
+                ->leftJoin('jobs', 'job_id', '=', 'jobs.id')
+                ->where('user_id', auth()->user()->id)
+                ->first();
             return $t;
         } catch (Throwable $e) {
             return null;
