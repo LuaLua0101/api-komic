@@ -21,7 +21,7 @@
                             <label class="control-label col-md-3">Tiêu đề việc làm
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <input type="text" id="title" name="title" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->title : ''}}">
                             </div>
                         </div>
@@ -29,7 +29,7 @@
                             <label class="control-label col-md-3">Mô tả ngắn
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <input type="text" id="short_description" name="short_description" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->short_description : ''}}">
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                             <label class="control-label col-md-3">Mô tả đầy đủ
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <textarea id="description" name="description">{{isset($data) ? $data->description : ''}}</textarea>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             <label class="control-label col-md-3">Lương tối thiểu
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <input type="number" id="salary_from" name="salary_from" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->salary_from : ''}}">
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                             <label class="control-label col-md-3">Lương tối đa
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <input type="number" id="salary_to" name="salary_to" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->salary_to : ''}}">
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                             <label class="control-label col-md-3">Loại hình công việc
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <div class="mt-radio-list" data-error-container="#form_2_membership_error">
                                     <label class="mt-radio">
                                         <input type="radio" name="type" value="0" @if(isset($data) && $data->job_type = 0) checked @endif> Full-time
@@ -79,7 +79,7 @@
                             <label class="control-label col-md-3">Chọn công ty
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 @php $companies = \App\Models\Company::get() @endphp
                                 <select class="form-control select2me select2-hidden-accessible" name="company" tabindex="-1" aria-hidden="true">
                                     <option value="0">Chọn công ty...</option>
@@ -99,7 +99,7 @@
                             <label class="control-label col-md-3">Chọn ngành nghề
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 @php $list = \App\Models\Career::get() @endphp
                                 <select class="form-control select2me select2-hidden-accessible" name="career" tabindex="-1" aria-hidden="true">
                                     <option value="0">Chọn ngành nghề...</option>
@@ -119,7 +119,7 @@
                             <label class="control-label col-md-3">Hạn nộp hồ sơ
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5 input-group date date-picker" data-date-format="yyyy-mm-dd">
+                            <div class="col-md-8 input-group date date-picker" data-date-format="yyyy-mm-dd">
                                 <input type="text" class="form-control" name="end_date" readonly aria-required="true" aria-invalid="false" aria-describedby="datepicker-error" value="{{isset($data) ? $data->end_date :''}}">
                                 <span class="input-group-btn">
                                     <button class="btn default" type="button">
@@ -132,7 +132,7 @@
                             <label class="control-label col-md-3">Quyền lợi
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <textarea id="benefit" name="benefits">{{isset($data) ? $data->benefits : ''}}</textarea>
                             </div>
                         </div>
@@ -140,7 +140,7 @@
                             <label class="control-label col-md-3">Yêu cầu công việc
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <textarea id="requirement" name="requirements">{{isset($data) ? $data->requirements : ''}}</textarea>
                             </div>
                         </div>
@@ -151,7 +151,7 @@
                             <label class="control-label col-md-3">Gán người dùng
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 @php $list = \App\Models\Account::get() @endphp
                                 <select multiple class="form-control select2me select2-hidden-accessible" name="user_pinned[]" tabindex="-1" aria-hidden="true">
                                     <option value="0">Gán người dùng...</option>
@@ -172,7 +172,7 @@
                             <label class="control-label col-md-3">Hình cover
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <input type="file" class="custom-file-input" id="form-avatar" name="cover">
                                 <label class="custom-file-label" for="form-avatar">@if(isset($data) && $data->cover != "")
                                     {{substr($data->cover,0,strpos($data->cover,'?'))}} @else Chọn hình

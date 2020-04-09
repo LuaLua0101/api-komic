@@ -29,7 +29,7 @@
                             <label class="control-label col-md-3">Mô tả ngắn
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <input type="text" id="short_description" name="short_description" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->short_description : ''}}">
                             </div>
                         </div>
@@ -37,7 +37,7 @@
                             <label class="control-label col-md-3">Mô tả đầy đủ
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <textarea id="description" name="description">{{isset($data) ? $data->description : ''}}</textarea>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                             <label class="control-label col-md-3">URL
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <input type="text" id="url" name="url" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->url : ''}}">
                             </div>
                         </div>
@@ -53,7 +53,7 @@
                             <label class="control-label col-md-3">Số lượng tải
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <input type="number" id="buy" name="buy" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->buy_count : ''}}">
                             </div>
                         </div>
@@ -61,7 +61,7 @@
                             <label class="control-label col-md-3">Lượt review
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 <input type="number" id="review" name="review" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->review_count : ''}}">
                             </div>
                         </div>
@@ -69,7 +69,7 @@
                             <label class="control-label col-md-3">Chọn block hiển thị
                                 <span class="required" aria-required="true"> * </span>
                             </label>
-                            <div class="col-md-5">
+                            <div class="col-md-8">
                                 @php $list = \App\Models\Block::get() @endphp
                                 <select class="form-control select2me select2-hidden-accessible" name="block" tabindex="-1" aria-hidden="true">
                                     <option value="0">Chọn block...</option>
