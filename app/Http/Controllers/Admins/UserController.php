@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admins;
 use App\Http\Controllers\Controller;
 use App\Models\Account;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -79,6 +80,7 @@ class UserController extends Controller
             'address'=>$request->address,
             'dob'=>$request->dob,
             'admin' => isset($request->admin) ? 1 : null,
+            'password' => Hash::make('123456'),
             'created_at' => date('Y-m-d H:i:s'),
         ];
 

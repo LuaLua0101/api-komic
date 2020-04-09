@@ -115,6 +115,26 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-md-3">Chọn loại khóa học
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-8">
+                                @php $list2 = \App\Models\CourseType::getList() @endphp
+                                <select class="form-control select2me select2-hidden-accessible" name="type" tabindex="-1" aria-hidden="true">
+                                    <option value="0">Chọn loại khóa học...</option>
+                                    @if(isset($data))
+                                    @foreach($list2 as $item)
+                                    <option value='{{$item->id}}' @if($data->type_id == $item->id) selected @endif>{{$item->name}}</option>
+                                    @endforeach
+                                    @else
+                                    @foreach($list2 as $value)
+                                    <option value='{{$value->id}}'>{{$value->name}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-md-3">Hình cover
                                 <span class="required" aria-required="true"> * </span>
                             </label>
