@@ -1,4 +1,4 @@
-@if(isset(auth()->user()))
+@if(auth()->check())
 <!-- BEGIN HEADER -->
 <div class="page-header navbar navbar-fixed-top">
     <!-- BEGIN HEADER INNER -->

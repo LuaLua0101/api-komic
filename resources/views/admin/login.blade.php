@@ -51,7 +51,7 @@
                     </form>
                     <!-- END FORGOT PASSWORD FORM -->
                 </div>
-                <div class="login-footer">
+                {{-- <div class="login-footer">
                     <div class="row bs-reset">
                         <div class="col-xs-5 bs-reset">
                             <ul class="login-social">
@@ -68,7 +68,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             </div>
             <div class="col-md-6 bs-reset">
                 <div class="login-bg"> </div>
@@ -82,8 +82,8 @@
         $.post("{{route('adpostLogin')}}"
                 , $("#login-form").serialize()
             ).done(function(data) {
-                if(data == 200)
-                window.location.href = "{{route('adgetHome')}}";
+                if (data == 200)
+                    window.location.href = "{{route('adgetHome')}}";
                 else location.reload();
             })
             .fail(function() {
@@ -95,7 +95,7 @@
         $.post("{{route('adpostForgotPass')}}"
                 , $("#forget-form").serialize()
             ).done(function() {
-               location.reload();
+                location.reload();
             })
             .fail(function() {
                 alert("error");
