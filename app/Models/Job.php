@@ -61,8 +61,8 @@ class Job extends Model
     public static function viecChoBan()
     {
         try {
-            $t = DB::table('job_user_pinneds')
-                ->leftJoin('jobs', 'job_id', '=', 'jobs.id')
+            $t = DB::table('jobs')
+                ->leftJoin('job_user_pinneds', 'job_id', '=', 'jobs.id')
                 ->where('user_id', auth()->user()->id)
                 ->first();
             return $t;
