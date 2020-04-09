@@ -21,6 +21,6 @@ class CheckAdmin
             return $next($request);
         }
 
-        return redirect()->route('adgetHome');
+        return redirect()->route('adgetLogin');
     }
 }

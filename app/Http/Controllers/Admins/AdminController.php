@@ -11,7 +11,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return redirect()->route('adgetLogin');
+        return view('admin.index');
     }
 
     public function getLogin()
