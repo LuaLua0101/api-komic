@@ -1,4 +1,6 @@
 <?php
+Route::get('/', 'Admins\AdminController@getLogin');
+
 Route::prefix('/ad')->group(function () {
 
     Route::get('/login', 'Admins\AdminController@getLogin')->name('adgetLogin');
