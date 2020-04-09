@@ -25,9 +25,7 @@ class Course extends Model
     public static function khoaHocHot()
     {
         try {
-            DB::beginTransaction();
             $t = Course::orderBy('buy_count', 'desc')->take(4)->get();
-            DB::commit();
             return $t;
         } catch (Throwable $e) {
             return null;
@@ -37,9 +35,7 @@ class Course extends Model
     public static function khoaHocQuanLy()
     {
         try {
-            DB::beginTransaction();
-            $t = Course::where('block_id', 'KHOA_HOC_QUAN_LY')->take(4)->get();
-            DB::commit();
+            $t = Course::where('topic_id', 3)->take(4)->get();
             return $t;
         } catch (Throwable $e) {
             return null;
@@ -49,9 +45,7 @@ class Course extends Model
     public static function khoaHocTangLuong()
     {
         try {
-            DB::beginTransaction();
             $t = Course::where('block_id', 'KHOA_HOC_TANG_LUONG')->take(4)->get();
-            DB::commit();
             return $t;
         } catch (Throwable $e) {
             return null;

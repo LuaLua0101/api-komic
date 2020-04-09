@@ -4,6 +4,9 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::post('refresh', 'Api\AuthController@refresh');
     Route::post('me', 'Api\AuthController@me');
 
+    //course topic
+    Route::get('get4CourseTopics', 'Api\CourseController@get4CourseTopics');
+
     //courses
     Route::get('getGreatCourse', 'Api\CourseController@getGreatCourse');
     Route::get('getHotestSkill', 'Api\CourseController@getHotestSkill');
