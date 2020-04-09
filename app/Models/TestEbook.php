@@ -94,6 +94,16 @@ class TestEbook extends Model
         }
     }
 
+    public static function getList($page = 1)
+    {
+        $page--;
+        try {
+            return TestEbook::orderBy('created_at', 'desc')->skip($page * 10)->take(10)->get();
+        } catch (Throwable $e) {
+            return null;
+        }
+    }
+
     public static function getListTest($page = 1)
     {
         $page--;
@@ -194,16 +204,7 @@ class TestEbook extends Model
         }
     }
 
-    public static function getByIdTest($id)
-    {
-        try {
-            return TestEbook::where('id', $id)->first();
-        } catch (Throwable $e) {
-            return null;
-        }
-    }
-
-    public static function getByIdEbook($id)
+    public static function getById($id)
     {
         try {
             return TestEbook::where('id', $id)->first();
