@@ -107,7 +107,7 @@ class EbookController extends Controller
 
     public function getEditEbook($id)
     {
-        $data = TestEbook::getByIdEbook($id);
+        $data = TestEbook::getById($id);
         if ($data) {
             return view('admin.ebooks.edit')->with('data', $data);
         } else {

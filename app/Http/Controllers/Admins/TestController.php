@@ -108,7 +108,7 @@ class TestController extends Controller
 
     public function getEditTest($id)
     {
-        $data = TestEbook::getByIdTest($id);
+        $data = TestEbook::getById($id);
         if ($data) {
             return view('admin.tests.edit')->with('data', $data);
         } else {
