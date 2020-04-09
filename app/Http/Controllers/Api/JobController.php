@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Models\Block;
+use App\Models\Company;
+use App\Models\Degree;
 use App\Models\Job;
 use Illuminate\Http\Request;
 
@@ -50,6 +52,9 @@ class JobController extends Controller
     public function getJobDetail($id)
     {
         $data = Job::getById($id);
+        $data['company'] = Company::getById($company_id);
+        $data['degree'] = Degree::getById($data->degree_id);
+
         return response()->json(['data' => $data], 200);
     }
 }

@@ -16,4 +16,13 @@ class Degree extends Model
             return null;
         }
     }
+
+    public static function getById($id)
+    {
+        try {
+            return Degree::where('id', $id)->first();
+        } catch (Throwable $e) {
+            return null;
+        }
+    }
 }
