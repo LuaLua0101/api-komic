@@ -19,6 +19,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('getNewestJob', 'Api\JobController@getNewestJob');
     Route::get('getManagerJob4U', 'Api\JobController@getManagerJob4U');
     Route::get('getJob4U', 'Api\JobController@getJob4U');
+    Route::get('getJobDetail/{id}', 'Api\JobController@getJobDetail');
     Route::get('getSameJob', 'Api\JobController@getSameJob');
     Route::get('getSavedJob', 'Api\JobController@getSavedJobs');
 

@@ -46,4 +46,10 @@ class JobController extends Controller
         $data = Job::viecDaLuu();
         return response()->json(['data' => $data], 200);
     }
+
+    public function getJobDetail($id)
+    {
+        $data = Job::getById($id);
+        return response()->json(['data' => $data], 200);
+    }
 }
