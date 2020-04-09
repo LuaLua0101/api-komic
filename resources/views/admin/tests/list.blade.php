@@ -28,7 +28,7 @@
                             <th> Tiêu đề </th>
                             <th> Giá tiền (VNĐ) </th>
                             <th> Số lượt mua </th>
-                            <th> Sô lượt xem </th>
+                            <th> Số lượt xem </th>
                             <th width="5%"> Sửa</th>
                             <th width="5%"> Xóa</th>
                         </tr>

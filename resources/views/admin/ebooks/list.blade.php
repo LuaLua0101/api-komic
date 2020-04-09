@@ -28,7 +28,7 @@
                             <th> Tên ebook </th>
                             <th> Đường dẫn </th>
                             <th> Số lượt tải </th>
-                            <th> Sô lượt xem </th>
+                            <th> Số lượt xem </th>
                             <th width="5%"> Sửa</th>
                             <th width="5%"> Xóa</th>
                         </tr>

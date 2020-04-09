@@ -27,10 +27,9 @@
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-3">Mô tả ngắn
-                                <span class="required" aria-required="true"> * </span>
                             </label>
                             <div class="col-md-8">
-                                <input type="text" id="short_description" name="short_description" data-required="1" class="form-control" required="" value="{{isset($data) ? $data->short_description : ''}}">
+                                <input type="text" id="short_description" name="short_description" class="form-control"  value="{{isset($data) ? $data->short_description : ''}}">
                             </div>
                         </div>
                         <div class="form-group">
