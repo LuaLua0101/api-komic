@@ -60,6 +60,12 @@ class CourseController extends Controller
     public function get4CourseTopics(Request $request)
     {
         $data = CourseTopic::getList();
+        return response()->json(['title' => 'Chủ đề khóa học', 'data' => $data], 200);
+    }
+
+    public function getCourseDetail($id)
+    {
+        $data = Course::getById($id);
         return response()->json(['data' => $data], 200);
     }
 }
