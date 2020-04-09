@@ -18,6 +18,7 @@
                 <table class="table table-bordered table-striped table-condensed flip-content">
                     <thead class="flip-content">
                         <tr>
+                            <th width="5%"> # </th>
                             <th width="5%"> ID </th>
                             <th> Ngành nghề </th>
                             <th width="5%"> Sửa</th>
@@ -27,6 +28,7 @@
                     <tbody>
                         @foreach($data as $item)
                         <tr>
+                            <td> {{ $loop->iteration }}</td>
                             <td> Career0{{$item->id}}</td>
                             <td> {{$item->name}} </td>
                             <td>

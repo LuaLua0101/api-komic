@@ -26,6 +26,7 @@
                     <tbody>
                         @foreach($data as $item)
                         <tr>
+                            <td> {{ $loop->iteration }}</td>
                             <td> Degree0{{$item->id}}</td>
                             <td> {{$item->name}} </td>
                         </tr>

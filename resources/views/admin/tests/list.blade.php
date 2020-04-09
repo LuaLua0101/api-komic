@@ -23,6 +23,7 @@
                 <table class="table table-bordered table-striped table-condensed flip-content">
                     <thead class="flip-content">
                         <tr>
+                            <th width="5%"> # </th>
                             <th width="5%"> ID </th>
                             <th> Tiêu đề </th>
                             <th> Giá tiền (VNĐ) </th>
@@ -34,7 +35,8 @@
                     </thead>
                     <tbody>
                         @foreach($data as $item)
-                        <tr>
+                        <tr> 
+                            <td> {{ $loop->iteration }}</td>
                             <td> Test0{{$item->id}}</td>
                             <td> {{$item->title}} </td>
                             <td> {{$item->price}} </td>

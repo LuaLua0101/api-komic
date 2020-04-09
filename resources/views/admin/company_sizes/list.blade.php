@@ -19,12 +19,14 @@
                 <table class="table table-bordered table-striped table-condensed flip-content">
                     <thead class="flip-content">
                         <tr>
+                            <th width="5%"> # </th>
                             <th> Quy mô </th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach($data as $item)
                         <tr>
+                            <td> {{ $loop->iteration }}</td>
                             <td> {{$item->size}} </td>
                         </tr>
                         @endforeach

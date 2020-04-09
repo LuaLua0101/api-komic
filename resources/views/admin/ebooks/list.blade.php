@@ -23,6 +23,7 @@
                 <table class="table table-bordered table-striped table-condensed flip-content">
                     <thead class="flip-content">
                         <tr>
+                            <th width="5%"> # </th>
                             <th width="5%"> ID </th>
                             <th> Tên ebook </th>
                             <th> Đường dẫn </th>
@@ -35,6 +36,7 @@
                     <tbody>
                         @foreach($data as $item)
                         <tr>
+                            <td> {{ $loop->iteration }}</td>
                             <td> Ebook0{{$item->id}}</td>
                             <td> {{$item->title}} </td>
                             <td> {{$item->url}} </td>

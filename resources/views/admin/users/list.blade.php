@@ -23,6 +23,7 @@
                 <table class="table table-bordered table-striped table-condensed flip-content">
                     <thead class="flip-content">
                         <tr>
+                            <th width="5%"> # </th>
                             <th width="5%"> ID </th>
                             <th> Họ tên </th>
                             <th> Giới tính </th>
@@ -37,6 +38,7 @@
                     <tbody>
                         @foreach($data as $item)
                         <tr>
+                            <td> {{ $loop->iteration }}</td>
                             <td> User0{{$item->id}}</td>
                             <td> {{$item->name}} </td>
                             <td> {{$item->gender == 0 ? 'Nữ' :'Nam'}} </td>

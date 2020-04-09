@@ -19,6 +19,7 @@
                 <table class="table table-bordered table-striped table-condensed flip-content">
                     <thead class="flip-content">
                         <tr>
+                            <th width="5%"> # </th>
                             <th width="5%"> ID </th>
                             <th> Tên tỉnh thành </th>
                             <th> Cấp hành chính </th>
@@ -28,6 +29,7 @@
                     <tbody>
                         @foreach($data as $item)
                         <tr>
+                            <td> {{ $loop->iteration }}</td>
                             <td> Province0{{$item->id}}</td>
                             <td> {{$item->name}} </td>
                             <td> {{$item->type}} </td>

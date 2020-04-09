@@ -24,6 +24,7 @@
                 <table class="table table-bordered table-striped table-condensed flip-content">
                     <thead class="flip-content">
                         <tr>
+                            <th width="5%"> # </th>
                             <th width="5%"> ID </th>
                             <th> Tiêu đề </th>
                             <th> Mức lương (VND)</th>
@@ -37,6 +38,7 @@
                     <tbody>
                         @foreach($data as $item)
                         <tr>
+                            <td> {{ $loop->iteration }}</td>
                             <td> JOB0{{$item->id}}</td>
                             <td> {{$item->title}} </td>
                             <td> {{number_format($item->salary_from, 0, '', ',') . ' - ' . number_format($item->salary_to, 0, '', ',')}} </td>
