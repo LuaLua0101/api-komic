@@ -40,6 +40,7 @@ class UserController extends Controller
 
     public function updatePersonalInfo(Request $request)
     {
+        return dd($request);
         // name
         $name = $request->name;
         if (!$name) {
@@ -61,7 +62,7 @@ class UserController extends Controller
             'phone' => $request->phone,
             'email' => $request->email,
             'address' => $request->address,
-            'dob' => $request->dob,
+            // 'dob' => $request->dob,
             'created_at' => date('Y-m-d H:i:s'),
         ];
 
