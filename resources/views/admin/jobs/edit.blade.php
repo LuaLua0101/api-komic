@@ -116,6 +116,26 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="control-label col-md-3">Yêu cầu bằng cấp
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-8">
+                                @php $list = \App\Models\Degree::getList() @endphp
+                                <select class="form-control select2me select2-hidden-accessible" name="degree" tabindex="-1" aria-hidden="true">
+                                    <option value="0">Chọn bằng cấp...</option>
+                                    @if(isset($data))
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}" @if($data->degree_id == $value->id) selected @endif>{{$value->name}}</option>
+                                    @endforeach
+                                    @else
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}">{{$value->name}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="control-label col-md-3">Hạn nộp hồ sơ
                                 <span class="required" aria-required="true"> * </span>
                             </label>
