@@ -1,5 +1,5 @@
 <div class="page-toolbar">
-    @if(isset($action))
+    @if(isset($action['link']) && isset($action['link']))
     <a href="{{$action['link']}}" style="color: #fff"><div id="dashboard-report-range" data-display-range="0" class="pull-right tooltips btn btn-fit-height green" data-placement="left" >
         <span class="thin uppercase hidden-xs">
         {{$action['title']}}

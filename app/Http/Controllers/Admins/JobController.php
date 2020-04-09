@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admins;
 use App\Http\Controllers\Controller;
 use App\Models\Job;
 use App\Models\JobPinned;
+use App\Models\JobCareer;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -81,6 +82,7 @@ class JobController extends Controller
             'salary_to' => $request->salary_to,
             'career_id' => $request->career,
             'degree_id' => $request->degree,
+            'exp_id' => $request->exp,
             'company_id' => intval($request->company),
             'job_type' => intval($request->type),
             'benefits' => $request->benefits,
@@ -120,6 +122,9 @@ class JobController extends Controller
         // user pinned
         $user_pinned = $request->user_pinned;
 
+        // careers
+        $job_careers = $request->careers;
+
         // coverFile
         $coverFile = $request->cover;
         $cover = "";
@@ -128,7 +133,6 @@ class JobController extends Controller
             $request->cover->storeAs('img/jobs/', $cover);
             $cover .= '?n=' . time();
         }
-
         $data = [
             'title' => $title,
             'short_description' => $request->short_description,
@@ -137,6 +141,7 @@ class JobController extends Controller
             'salary_to' => $request->salary_to,
             'career_id' => $request->career,
             'degree_id' => $request->degree,
+            'exp_id' => $request->exp,
             'company_id' => intval($request->company),
             'job_type' => intval($request->type),
             'benefits' => $request->benefits,
@@ -152,6 +157,8 @@ class JobController extends Controller
         $result = Job::updateRecord($id, $data);
 
         if ($result) {
+            // update user pinned
+            if($user_pinned ) {
             $data = [];
             foreach ($user_pinned as $pin) {
                 array_push($data, [
@@ -163,8 +170,24 @@ class JobController extends Controller
             if ($data != []) {
                 JobPinned::clearAll($id);
                 JobPinned::addNew($data);
-            }
+            }}
 
+            //update careers
+            if($job_careers ) {
+            $data = [];
+            
+            foreach ($job_careers as $pin) {
+                array_push($data, [
+                    'job_id' => $id,
+                    'career_id' => intval($pin),
+                    'created_at' => date('Y-m-d H:i:s'),
+                ]);
+            }
+            if ($data != []) {
+                JobCareer::clearAll($id);
+                JobCareer::addNew($data);
+            }
+        }
             toastr()->success('Chỉnh sửa thành công');
             return redirect()->route('adgetListJob');
         } else {

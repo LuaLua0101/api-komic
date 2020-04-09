@@ -95,7 +95,7 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <label class="control-label col-md-3">Chọn ngành nghề
                                 <span class="required" aria-required="true"> * </span>
                             </label>
@@ -114,7 +114,7 @@
                                     @endif
                                 </select>
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group">
                             <label class="control-label col-md-3">Yêu cầu bằng cấp
                                 <span class="required" aria-required="true"> * </span>
@@ -126,6 +126,26 @@
                                     @if(isset($data))
                                     @foreach($list as $key => $value)
                                     <option value="{{$value->id}}" @if($data->degree_id == $value->id) selected @endif>{{$value->name}}</option>
+                                    @endforeach
+                                    @else
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}">{{$value->name}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Yêu cầu kinh nghiệm
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-8">
+                                @php $list = \App\Models\Experience::getList() @endphp
+                                <select class="form-control select2me select2-hidden-accessible" name="exp" tabindex="-1" aria-hidden="true">
+                                    <option value="0">Chọn kinh nghiệm...</option>
+                                    @if(isset($data))
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}" @if($data->exp_id == $value->id) selected @endif>{{$value->name}}</option>
                                     @endforeach
                                     @else
                                     @foreach($list as $key => $value)
@@ -164,6 +184,30 @@
                                 <textarea id="requirement" name="requirements">{{isset($data) ? $data->requirements : ''}}</textarea>
                             </div>
                         </div>
+                        @if(isset($data))
+                        @php $pinneds = \App\Models\JobCareer::select('career_id')->where('job_id', $data->id)->get()
+                        @endphp
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Chọn ngành nghề
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-8">
+                                @php $list = \App\Models\Career::get() @endphp
+                                <select multiple class="form-control select2me select2-hidden-accessible" name="careers[]" tabindex="-1" aria-hidden="true">
+                                    <option value="0">Chọn ngành nghề  ...</option>
+                                    @if(isset($data))
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}" @if( \App\Models\Career::checkInArray($pinneds,$value->id)) selected @endif>{{$value->name}}</option>
+                                    @endforeach
+                                    @else
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}">{{$value->name}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        @endif
                         @if(isset($data))
                         @php $pinneds = \App\Models\JobPinned::select('user_id')->where('job_id', $data->id)->get()
                         @endphp

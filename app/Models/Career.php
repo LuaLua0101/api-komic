@@ -88,4 +88,14 @@ class Career extends Model
             return null;
         }
     }
+
+    public static function checkInArray($arr, $value)
+    {
+        foreach ($arr as $item) {
+            if ($value == $item->career_id) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
