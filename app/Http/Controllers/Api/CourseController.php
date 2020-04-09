@@ -67,13 +67,13 @@ class CourseController extends Controller
     public function getCourseDetail($id)
     {
         $data = Course::getById($id);
+        $data['author'] = Author::getById($data->author_id);
         return response()->json(['data' => $data], 200);
     }
 
     public function getCourses($type)
     {
         $data = Course::getList(1);
-        $data['author'] = Author::getById($data->author_id);
         return response()->json(['data' => $data], 200);
     }
 }
