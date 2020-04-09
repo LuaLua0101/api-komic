@@ -57,4 +57,11 @@ class JobController extends Controller
 
         return response()->json(['data' => $data], 200);
     }
+
+    public function getJobs()
+    {
+        $data = Job::getList(1);
+
+        return response()->json(['data' => $data], 200);
+    }
 }
