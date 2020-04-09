@@ -7,7 +7,6 @@ use App\Models\Block;
 use App\Models\Company;
 use App\Models\Degree;
 use App\Models\Job;
-use App\Models\Province;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -62,7 +61,6 @@ class JobController extends Controller
     public function getJobs()
     {
         $data = Job::getList(1);
-        $data['province'] = Province::getById($data->province_id);
         return response()->json(['data' => $data], 200);
     }
 }
