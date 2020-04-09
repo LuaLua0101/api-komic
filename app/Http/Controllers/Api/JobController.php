@@ -52,7 +52,7 @@ class JobController extends Controller
     public function getJobDetail($id)
     {
         $data = Job::getById($id);
-        $data['company'] = Company::getById($company_id);
+        $data['company'] = Company::getById($data->company_id);
         $data['degree'] = Degree::getById($data->degree_id);
 
         return response()->json(['data' => $data], 200);
