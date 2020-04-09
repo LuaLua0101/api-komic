@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admins;
 
 use App\Http\Controllers\Controller;
 use App\Models\Job;
+use App\Models\JobPinned;
 use Illuminate\Http\Request;
 
 class JobController extends Controller
@@ -55,6 +56,7 @@ class JobController extends Controller
 
     public function postAddJob(Request $request)
     {
+
         // title
         $title = $request->title;
         if (!$title) {
@@ -114,6 +116,9 @@ class JobController extends Controller
             $title = "Job " . time();
         }
 
+        // user pinned
+        $user_pinned = $request->user_pinned;
+
         // coverFile
         $coverFile = $request->cover;
         $cover = "";
@@ -145,6 +150,19 @@ class JobController extends Controller
         $result = Job::updateRecord($id, $data);
 
         if ($result) {
+            $data = [];
+            foreach ($user_pinned as $pin) {
+                array_push($data, [
+                    'job_id' => $id,
+                    'user_id' => intval($pin),
+                    'created_at' => date('Y-m-d H:i:s'),
+                ]);
+            }
+            if ($data != []) {
+                JobPinned::clearAll($id);
+                JobPinned::addNew($data);
+            }
+
             toastr()->success('Chỉnh sửa thành công');
             return redirect()->route('adgetListJob');
         } else {

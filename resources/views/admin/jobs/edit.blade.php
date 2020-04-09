@@ -144,6 +144,30 @@
                                 <textarea id="requirement" name="requirements">{{isset($data) ? $data->requirements : ''}}</textarea>
                             </div>
                         </div>
+                        @if(isset($data))
+                        @php $pinneds = \App\Models\JobPinned::select('user_id')->where('job_id', $data->id)->get()
+                        @endphp
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Gán người dùng
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-5">
+                                @php $list = \App\Models\Account::get() @endphp
+                                <select multiple class="form-control select2me select2-hidden-accessible" name="user_pinned[]" tabindex="-1" aria-hidden="true">
+                                    <option value="0">Gán người dùng...</option>
+                                    @if(isset($data))
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}" @if( \App\Models\Account::checkInArray($pinneds,$value->id)) selected @endif>{{$value->name}}</option>
+                                    @endforeach
+                                    @else
+                                    @foreach($list as $key => $value)
+                                    <option value="{{$value->id}}">{{$value->name}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
+                        @endif
                         <div class="form-group">
                             <label class="control-label col-md-3">Hình cover
                                 <span class="required" aria-required="true"> * </span>

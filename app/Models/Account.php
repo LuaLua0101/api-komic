@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
+use App\SMS\SpeedSMSAPI;
 use DB;
 use File;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Hash;
-use App\SMS\SpeedSMSAPI;
 
 class Account extends Model
 {
@@ -127,20 +127,20 @@ class Account extends Model
 
     public static function active()
     {
-       
+
         try {
             $model = Account::findOrFail(auth()->user()->id);
-            if($model->active != 1) {
-                $r =rand(1000,9999);
+            if ($model->active != 1) {
+                $r = rand(1000, 9999);
                 $smsAPI = new SpeedSMSAPI;
                 $userInfo = $smsAPI->getUserInfo();
                 $phones = [$model->phone];
                 $content = "Ma xac nhan OTP tu Balance app la " . $r;
                 $type = 1;
                 $sender = "brandname";
-                
+
                 $response = $smsAPI->sendSMS($phones, $content, $type, $sender);
-                if($response) {
+                if ($response) {
                     $model->confirm_code = $r;
                     $model->save();
                     return $response;
@@ -150,5 +150,15 @@ class Account extends Model
         } catch (Throwable $e) {
             return null;
         }
+    }
+
+    public static function checkInArray($arr, $value)
+    {
+        foreach ($arr as $item) {
+            if ($value == $item->user_id) {
+                return true;
+            }
+        }
+        return false;
     }
 }
