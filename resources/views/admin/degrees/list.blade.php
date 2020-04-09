@@ -19,7 +19,7 @@
                 <table class="table table-bordered table-striped table-condensed flip-content">
                     <thead class="flip-content">
                         <tr>
-                            <th width="5%"> ID </th>
+                            
                             <th> Tên bằng cấp </th>
                         </tr>
                     </thead>
@@ -27,7 +27,6 @@
                         @foreach($data as $item)
                         <tr>
                             <td> {{ $loop->iteration }}</td>
-                            <td> Degree0{{$item->id}}</td>
                             <td> {{$item->name}} </td>
                         </tr>
                         @endforeach

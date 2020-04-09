@@ -39,7 +39,7 @@
                 <table class="table table-bordered table-striped table-condensed flip-content">
                     <thead class="flip-content">
                         <tr>
-                            <th width="5%"> ID </th>
+                            
                             <th> Tên quận huyện </th>
                             <th> Cấp hành chính </th>
                         </tr>

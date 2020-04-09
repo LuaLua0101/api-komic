@@ -24,7 +24,7 @@
                     <thead class="flip-content">
                         <tr>
                             <th width="5%"> # </th>
-                            <th width="5%"> ID </th>
+                            
                             <th> Họ tên </th>
                             <th> Giới tính </th>
                             <th> Ngày sinh </th>
@@ -39,7 +39,6 @@
                         @foreach($data as $item)
                         <tr>
                             <td> {{ $loop->iteration }}</td>
-                            <td> User0{{$item->id}}</td>
                             <td> {{$item->name}} </td>
                             <td> {{$item->gender == 0 ? 'Nữ' :'Nam'}} </td>
                             <td> {{$item->dob}} </td>

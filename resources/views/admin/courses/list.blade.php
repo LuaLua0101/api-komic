@@ -24,7 +24,7 @@
                     <thead class="flip-content">
                         <tr>
                             <th width="5%"> # </th>
-                            <th width="5%"> ID </th>
+                            
                             <th> Tiêu đề </th>
                             <th> Giá tiền (VNĐ)</th>
                             <th> Giảng viên </th>
@@ -39,7 +39,6 @@
                         @foreach($data as $item)
                         <tr>
                             <td> {{ $loop->iteration }}</td>
-                            <td> Course0{{$item->id}}</td>
                             <td> {{$item->title}} </td>
                             <td> {{number_format($item->price, 0, '', ',')}}</td>
                             <td> {{\App\Models\Author::getNameById($item->author_id)}} </td>

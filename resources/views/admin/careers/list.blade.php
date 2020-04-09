@@ -19,7 +19,6 @@
                     <thead class="flip-content">
                         <tr>
                             <th width="5%"> # </th>
-                            <th width="5%"> ID </th>
                             <th> Ngành nghề </th>
                             <th width="5%"> Sửa</th>
                             <th width="5%"> Xóa</th>
@@ -29,7 +28,6 @@
                         @foreach($data as $item)
                         <tr>
                             <td> {{ $loop->iteration }}</td>
-                            <td> Career0{{$item->id}}</td>
                             <td> {{$item->name}} </td>
                             <td>
                                 <a class="btn delete-btn dt-button buttons-pdf buttons-html5  purple btn-outline" href="{{route('adgetEditCareer', ['id' => $item->id])}}"><i class="fa fa-pencil-square-o"></i></a>

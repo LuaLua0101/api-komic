@@ -24,7 +24,7 @@
                     <thead class="flip-content">
                         <tr>
                             <th width="5%"> # </th>
-                            <th width="5%"> ID </th>
+                            
                             <th> Tên ebook </th>
                             <th> Đường dẫn </th>
                             <th> Số lượt tải </th>
@@ -37,7 +37,6 @@
                         @foreach($data as $item)
                         <tr>
                             <td> {{ $loop->iteration }}</td>
-                            <td> Ebook0{{$item->id}}</td>
                             <td> {{$item->title}} </td>
                             <td> {{$item->url}} </td>
                             <td> {{$item->buy_count}} </td>
