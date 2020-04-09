@@ -98,7 +98,7 @@
                                 <span class="required" aria-required="true"> * </span>
                             </label>
                             <div class="col-md-8">
-                                @php $list = \App\Models\Block::get() @endphp
+                                @php $list = \App\Models\Block::getList() @endphp
                                 <select class="form-control select2me select2-hidden-accessible" name="block" tabindex="-1" aria-hidden="true">
                                     <option value="0">Chọn block...</option>
                                     @if(isset($data))
