@@ -184,6 +184,26 @@
                                 <textarea id="requirement" name="requirements">{{isset($data) ? $data->requirements : ''}}</textarea>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Chọn block hiển thị
+                                <span class="required" aria-required="true"> * </span>
+                            </label>
+                            <div class="col-md-8">
+                                @php $list2 = \App\Models\Block::getList() @endphp
+                                <select class="form-control select2me select2-hidden-accessible" name="block" tabindex="-1" aria-hidden="true">
+                                    <option value="0">Chọn block...</option>
+                                    @if(isset($data))
+                                    @foreach($list2 as $item)
+                                    <option value='{{$item->id}}' @if($data->block_id == $item->id) selected @endif>{{$item->name}}</option>
+                                    @endforeach
+                                    @else
+                                    @foreach($list2 as $value)
+                                    <option value='{{$value->id}}'>{{$value->name}}</option>
+                                    @endforeach
+                                    @endif
+                                </select>
+                            </div>
+                        </div>
                         @if(isset($data))
                         @php $pinneds = \App\Models\JobCareer::select('career_id')->where('job_id', $data->id)->get()
                         @endphp
