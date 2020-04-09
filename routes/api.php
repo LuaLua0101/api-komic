@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
 
     //user
     Route::get('getPersonalInfo', 'Api\UserController@getPersonalInfo');
+    Route::get('updatePersonalInfo', 'Api\UserController@updatePersonalInfo');
     Route::get('getMyCV', 'Api\UserController@getMyCV');
     Route::post('updateFCM', 'Api\UserController@updateFCM');
 

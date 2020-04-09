@@ -38,6 +38,46 @@ class UserController extends Controller
         }
     }
 
+    public function updatePersonalInfo(Request $request)
+    {
+        // name
+        $name = $request->name;
+        if (!$name) {
+            $name = "User " . time();
+        }
+
+        // coverFile
+        // $coverFile = $request->cover;
+        // $cover = "";
+        // if ($request->hasFile('cover')) {
+        //     $cover = time() . '.' . $request->cover->extension();
+        //     $request->cover->storeAs('img/users/', $cover);
+        //     $cover .= '?n=' . time();
+        // }
+
+        $data = [
+            'name' => $name,
+            'gender' => intval($request->gender),
+            'phone' => $request->phone,
+            'email' => $request->email,
+            'address' => $request->address,
+            'dob' => $request->dob,
+            'created_at' => date('Y-m-d H:i:s'),
+        ];
+
+        // if ($cover != "") {
+        //     $data['avatar'] = $cover;
+        // }
+
+        $result = Account::updateRecord(auth()->user()->id, $data);
+
+        if ($result) {
+            return response()->json([$result], 200);
+        } else {
+            return response()->json(['error'], 500);
+        }
+    }
+
     public function postActiveUser(Request $request)
     {
         // $t = Account::updateFCM($request->fcm_token);
@@ -47,5 +87,5 @@ class UserController extends Controller
         //     return response()->json(['error'], 500);
         // }
     }
-    
+
 }
