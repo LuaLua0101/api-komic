@@ -98,16 +98,16 @@
                                 <span class="required" aria-required="true"> * </span>
                             </label>
                             <div class="col-md-5">
-                                @php $list = \App\Models\Block::get() @endphp
+                                @php $list2 = \App\Models\Block::getList() @endphp
                                 <select class="form-control select2me select2-hidden-accessible" name="block" tabindex="-1" aria-hidden="true">
                                     <option value="0">Chọn block...</option>
                                     @if(isset($data))
-                                    @foreach($list as $key => $value)
-                                    <option value="{{$value->id}}" @if($data->block_id == $value->id) selected @endif>{{$value->name}}</option>
+                                    @foreach($list2 as $item)
+                                    <option value='{{$item->id}}' @if($data->block_id == $item->id) selected @endif>{{$item->name}}</option>
                                     @endforeach
                                     @else
-                                    @foreach($list as $key => $value)
-                                    <option value="{{$value->id}}">{{$value->name}}</option>
+                                    @foreach($list2 as $value)
+                                    <option value='{{$value->id}}'>{{$value->name}}</option>
                                     @endforeach
                                     @endif
                                 </select>
@@ -123,7 +123,7 @@
                                     {{substr($data->cover,0,strpos($data->cover,'?'))}} @else Chọn hình
                                     @endif </label>
                                 <img id="file-show" @if(isset($data) && $data->cover != "")
-                                src="{{asset('public/admins/img/Courses/' .$data->cover)}}" @else class="hidden" @endif >
+                                src="{{asset('public/admins/img/courses/' .$data->cover)}}" @else class="hidden" @endif >
                             </div>
                         </div>
                         <div class="form-actions">
