@@ -24,9 +24,7 @@ class Company extends Model
     public static function DNCanBan()
     {
         try {
-            DB::beginTransaction();
-            $t = Company::take(4)->get();
-            DB::commit();
+            $t = Company::where('province_id', auth()->user()->province_id)->take(4)->get();
             return $t;
         } catch (Throwable $e) {
             return null;

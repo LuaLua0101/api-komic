@@ -26,6 +26,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     //companies
     Route::get('getNearestCompany', 'Api\CompanyController@getNearestCompany');
     Route::get('getCompany4U', 'Api\CompanyController@getCompany4u');
+    Route::get('getCompanyNeedU', 'Api\CompanyController@getCompanyNeedU');
     Route::get('getSavedCompany', 'Api\CompanyController@getSavedCompany');
 
     //test & ebook
