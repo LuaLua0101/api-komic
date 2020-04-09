@@ -68,4 +68,10 @@ class CourseController extends Controller
         $data = Course::getById($id);
         return response()->json(['data' => $data], 200);
     }
+
+    public function getCourses($type)
+    {
+        $data = Course::getList(1);
+        return response()->json(['data' => $data], 200);
+    }
 }

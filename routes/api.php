@@ -17,6 +17,8 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('getMyCourses', 'Api\CourseController@getMyCourses');
     Route::get('getCourseDetail/{id}', 'Api\CourseController@getCourseDetail');
 
+    Route::get('getCourses/{type?}', 'Api\CourseController@getCourses');
+
     //jobs
     Route::get('getNearestJob', 'Api\JobController@getNearestJob');
     Route::get('getHotestJob', 'Api\JobController@getHotestJob');
