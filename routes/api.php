@@ -16,7 +16,6 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('getSavedCourses', 'Api\CourseController@getSavedCourses');
     Route::get('getMyCourses', 'Api\CourseController@getMyCourses');
     Route::get('getCourseDetail/{id}', 'Api\CourseController@getCourseDetail');
-
     Route::get('getCourses/{type?}', 'Api\CourseController@getCourses');
 
     //jobs
@@ -40,6 +39,9 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('getEbook4U', 'Api\TestEbookController@getEbook4U');
     Route::get('getNewestTest', 'Api\TestEbookController@getNewestTest');
     Route::get('getWhoAreYouTest', 'Api\TestEbookController@getWhoAreYouTest');
+
+    Route::get('getTestDetail/{id}', 'Api\TestEbookController@getTestDetail');
+    Route::get('getTests/{type?}', 'Api\TestEbookController@getTests');
 
     //user
     Route::get('getPersonalInfo', 'Api\UserController@getPersonalInfo');
