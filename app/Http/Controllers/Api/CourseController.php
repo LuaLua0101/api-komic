@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Models\Author;
 use App\Models\Block;
 use App\Models\Course;
 use App\Models\CourseTopic;
@@ -72,6 +73,7 @@ class CourseController extends Controller
     public function getCourses($type)
     {
         $data = Course::getList(1);
+        $data['author'] = Author::getById($data->author_id);
         return response()->json(['data' => $data], 200);
     }
 }
