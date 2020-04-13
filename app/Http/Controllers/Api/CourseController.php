@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Author;
 use App\Models\Block;
 use App\Models\Course;
-use App\Models\CourseTopic;
+use App\Models\CourseType;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
@@ -60,7 +60,7 @@ class CourseController extends Controller
 
     public function get4CourseTopics(Request $request)
     {
-        $data = CourseTopic::getList();
+        $data = CourseType::getList();
         return response()->json(['title' => 'Chủ đề khóa học', 'data' => $data], 200);
     }
 
