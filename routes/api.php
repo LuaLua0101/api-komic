@@ -45,6 +45,7 @@ Route::group(['middleware' => 'auth.jwt'], function () {
     Route::get('getTests/{type?}', 'Api\TestEbookController@getTests');
 
     //user
+    Route::get('getUserList', 'Api\UserController@getUserList');
     Route::get('getPersonalInfo', 'Api\UserController@getPersonalInfo');
     Route::post('updatePersonalInfo', 'Api\UserController@updatePersonalInfo');
     Route::get('getMyCV', 'Api\UserController@getMyCV');

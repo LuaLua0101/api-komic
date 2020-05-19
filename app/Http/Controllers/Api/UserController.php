@@ -13,6 +13,11 @@ class UserController extends Controller
         return Account::find(auth()->user()->id);
     }
 
+    public function getUserList()
+    {
+        return Account::get();
+    }
+
     public function getMyCV(Request $request)
     {
         return 'OK';
